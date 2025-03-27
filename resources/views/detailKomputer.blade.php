@@ -24,8 +24,8 @@
 
                 </div>
                 <div class=" flex gap-4 text-center mt-5 ">
-                    <a href=" {{ route('detailKomputer') }}"
-                        class="bg-orange-500  p-2 rounded-md w-full hover:bg-orange-500 text-white">Update</a>
+                    <a href=" {{ route('updateData') }}"
+                        class="bg-orange-500  p-2 rounded-md w-full hover:bg-blue-500  text-white">Update</a>
                     <a href=" {{ route('detailKomputer') }}"
                         class="bg-blue-500  p-2 rounded-md w-full hover:bg-orange-500 text-white">Delete</a>
                 </div>

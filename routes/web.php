@@ -8,9 +8,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/createData', function () {
-    return view('createData');
-})->middleware(['auth', 'verified'])->name('createData');
+Route::get('/dataKomputer', function () {
+    return view('dataKomputer');
+})->middleware(['auth', 'verified'])->name('dataKomputer');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -18,7 +18,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/dataKomputer', [MasterController::class, 'dataKomputer'])->name('dataKomputer');
-    Route::get('/', [MasterController::class, 'detailKomputer'])->name('detailKomputer');
+    Route::post('/storeData', [MasterController::class, 'storeData'])->name('storeData');
+    Route::get('/createData', [MasterController::class, 'createData'])->name('createData');
+    Route::get('/detailKomputer', [MasterController::class, 'detailKomputer'])->name('detailKomputer');
+    Route::get('/updateData', [MasterController::class, 'updateData'])->name('updateData');
+
 });
 
 require __DIR__.'/auth.php';
