@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\komputer;
+use App\Models\dataKomputer;
+
 
 class MasterController extends Controller
 {
@@ -27,42 +28,37 @@ class MasterController extends Controller
         return view('createData');
     }
 
-    public function storeData(Request $request)
-    {
-        $request->validate([
-            'nama_komputer' => 'required',
-            'ip_address' => 'required',
-            'sistem_operasi' => 'required',
-            'ruangan' => 'required',
-            'monitor' => 'required',
-            'keyboard' => 'required',
-            'ram' => 'required',
-            'processor' => 'required',
-            'ssd/hhd' => 'required',
-            'motherboard' => 'required',
-            'lan_card' => 'required',
-            'keterangan' => 'required',
-            'images' => 'required'
-        ]);
+   public function storeData(Request $request)
+   {
+      // Validasi data
+    $validatedData = $request->validate([
+        'nama_komputer'  => 'required|string|max:255',
+        'ip_address'     => 'required|ip',
+        'sistem_operasi' => 'required|string|max:255',
+        'ruangan'        => 'required|string|max:255',
+        'monitor'        => 'required|string|max:255',
+        'keyboard'       => 'required|string|max:255',
+        'ram'            => 'required|string|max:255',
+        'prosesor'       => 'required|string|max:255',
+        'ssd_hhd'        => 'required|string|max:255',
+        'motherboard'    => 'required|string|max:255',
+        'lan_card'       => 'required|string|max:255',
+        'keterangan'     => 'nullable|string',
+        'images'         => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+    ]);
 
-       $dataKomputer = komputer::create([
-            'nama_komputer' => $request->nama_komputer,
-            'ip_address' => $request->ip_address,            
-            'sistem_operasi' => $request->sistem_operasi,            
-            'ruangan' => $request->ruangan,            
-            'monitor' => $request->monitor,            
-            'keyboard' => $request->keyboard,            
-            'ram' => $request->ram,            
-            'processor' => $request->processor,            
-            'ssd_hhd' => $request->ssd_hhd,            
-            'motherboard' => $request->motherboard,            
-            'lan_card' => $request->lan_card,            
-            'keterangan' => $request->keterangan,            
-            'images' => $images->images
-        ]); 
-        dd($dataKomputer);
 
-        return redirect()->route('dataKomputer')->with(['success' => 'Data Berhasil Disimpan!']);
+    // Simpan gambar jika ada
+    if ($request->hasFile('images')) {
+        $imagePath = $request->file('images')->store('uploads', 'public');
+        $validatedData['images'] = $imagePath;
     }
+
+    // Simpan data ke database
+    Komputer::create($validatedData);
+
+    return redirect()->route('dataKomputer')->with('success', 'Data berhasil disimpan!');
+
+   }
 
 }

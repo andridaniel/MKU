@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class komputer extends Model
+class Komputer extends Model
+
+
 {
+    protected $table = 'dataKomputers';
     protected $fillable = [
         'nama_komputer',
         'ip_address',
@@ -14,11 +18,13 @@ class komputer extends Model
         'monitor',
         'keyboard',
         'ram',
-        'prosesor',
+        'processor',
         'ssd_hhd',
         'motherboard',
         'lan_card',
         'keterangan',
         'images',
     ];
+
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 }

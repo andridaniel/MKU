@@ -1,6 +1,18 @@
 <x-app-layout>
     <div class="m-5 bg-gray-200 rounded-md">
-        <form action="{{ route('storeData') }}" method="POST" type="multipart/form-data"  >
+
+      @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+      @endif
+
+    @if(session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session()->get('error') }}
+        </div>
+    @endif
+        <form action="{{ route('storeData') }}" method="post" type="multipart/form-data"  >
           @csrf
             <div class="space-y-12">
               <div class="border-b border-gray-900/10 pb-12">
@@ -68,9 +80,9 @@
                           </div>
 
                           <div class="sm:col-span-3">
-                            <label for="prosesor" class="block text-sm/6 font-medium text-gray-900">Prosesor Komputer</label>
+                            <label for="processor" class="block text-sm/6 font-medium text-gray-900">Prosesor Komputer</label>
                             <div class="mt-2">
-                              <input type="text" name="prosesor" id="prosesor" autocomplete="family-name" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                              <input type="text" name="processor" id="processor" autocomplete="family-name" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                             </div>
                           </div>
 
