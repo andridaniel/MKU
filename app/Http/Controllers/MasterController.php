@@ -44,8 +44,6 @@ class MasterController extends Controller
             'keterangan' => 'required',
             'images' => 'required'
         ]);
-        $images = $request->file('images');
-        $images->storeAs('public/images', $images->hashName());
 
        $dataKomputer = komputer::create([
             'nama_komputer' => $request->nama_komputer,
@@ -60,7 +58,7 @@ class MasterController extends Controller
             'motherboard' => $request->motherboard,            
             'lan_card' => $request->lan_card,            
             'keterangan' => $request->keterangan,            
-            'images' => $images->hashName()
+            'images' => $images->images
         ]); 
         dd($dataKomputer);
 
