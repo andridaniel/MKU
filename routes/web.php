@@ -17,11 +17,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/dataKomputer', [MasterController::class, 'dataKomputer'])->name('dataKomputer');
+    Route::get('/dataKomputer', [MasterController::class, 'showData'])->name('dataKomputer');
     Route::post('/storeData', [MasterController::class, 'storeData'])->name('storeData');
     Route::get('/createData', [MasterController::class, 'createData'])->name('createData');
-    Route::get('/detailKomputer', [MasterController::class, 'detailKomputer'])->name('detailKomputer');
+    Route::get('/detailKomputer/{id}', [MasterController::class, 'detailKomputer'])->name('detailKomputer');
     Route::get('/updateData', [MasterController::class, 'updateData'])->name('updateData');
+    Route::delete('deleteData/{id}', [MasterController::class, 'deleteData'])->name('deleteData');
+
+
 
 });
 

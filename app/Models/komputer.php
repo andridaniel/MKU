@@ -18,7 +18,7 @@ class Komputer extends Model
         'monitor',
         'keyboard',
         'ram',
-        'processor',
+        'prosesor',
         'ssd_hhd',
         'motherboard',
         'lan_card',

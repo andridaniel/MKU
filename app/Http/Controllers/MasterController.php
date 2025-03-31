@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\dataKomputer;
+use App\Models\Komputer;
 
 
 class MasterController extends Controller
@@ -13,9 +13,11 @@ class MasterController extends Controller
         return view('dataKomputer');
     }
 
-    public function detailKomputer()
+    public function detailKomputer($id)
     {
-        return view('detailKomputer');
+        $detailKomputer= Komputer::findOrFail($id);
+
+        return view('detailKomputer', compact('detailKomputer'));
     }
 
     public function updateData()
@@ -28,12 +30,13 @@ class MasterController extends Controller
         return view('createData');
     }
 
-   public function storeData(Request $request)
+// Menabahkan Data
+    public function storeData(Request $request)
    {
       // Validasi data
     $validatedData = $request->validate([
         'nama_komputer'  => 'required|string|max:255',
-        'ip_address'     => 'required|ip',
+        'ip_address'     => 'required|string|max:255',
         'sistem_operasi' => 'required|string|max:255',
         'ruangan'        => 'required|string|max:255',
         'monitor'        => 'required|string|max:255',
@@ -44,21 +47,44 @@ class MasterController extends Controller
         'motherboard'    => 'required|string|max:255',
         'lan_card'       => 'required|string|max:255',
         'keterangan'     => 'nullable|string',
-        'images'         => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        'images'         => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
 
     // Simpan gambar jika ada
     if ($request->hasFile('images')) {
-        $imagePath = $request->file('images')->store('uploads', 'public');
-        $validatedData['images'] = $imagePath;
+        $image = $request->file('images');
+
+        // Simpan gambar ke folder 'public/images' yang ada di root Laravel
+        $imageName = time() . '_' . $image->getClientOriginalName();
+        $image->move(public_path('images'), $imageName);
+
+        // Simpan nama file ke database
+        $validatedData['images'] = 'images/' . $imageName;
     }
+
 
     // Simpan data ke database
     Komputer::create($validatedData);
 
-    return redirect()->route('dataKomputer')->with('success', 'Data berhasil disimpan!');
+    return redirect()->route('dataKomputer')->with('success', 'Data komputer berhasil disimpan.');
 
    }
 
+//    Menampilkan Data
+    public function showData()
+    {
+        $data = Komputer::all();
+        return view('dataKomputer', compact('data'));
+
+
+    }
+
+//    Menghapus Data
+    public function deleteData($id)
+    {
+        $data = Komputer::find($id);
+        $data->delete();
+        return redirect()->route('dataKomputer')->with('success', 'Data berhasil dihapus');
+    }
 }
