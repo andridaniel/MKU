@@ -92,16 +92,21 @@
                     </div>
                     <div class="flex gap-4 mt-5 bg-slate-100 p-4 rounded-md shadow-md">
                         <!-- Tombol Update -->
-                        <a href="{{ route('updateData') }}"
-                            class="w-1/2 text-center bg-orange-500 p-3 rounded-lg text-white font-semibold transition duration-300 ease-in-out hover:bg-blue-500 shadow-md">
-                            Update
-                        </a>
+                        <form action="{{ route('updateData', ['id' => $detailKomputer->id]) }}" method="POST"
+                            class="w-1/2">
+                            @csrf
+                            @method('get')
+                            <button type="submit"
+                                class="w-full bg-orange-500 p-3 rounded-lg text-white font-semibold transition duration-300 ease-in-out hover:bg-red-700 shadow-md">
+                                Update
+                            </button>
+                        </form>
 
                         <!-- Tombol Delete -->
                         <form action="{{ route('deleteData', $detailKomputer->id) }}" method="POST" class="w-1/2">
                             @csrf
                             @method('DELETE')
-                            <button type="submit"
+                            <button type="submit" id="deleteButton"
                                 class="w-full bg-red-600 p-3 rounded-lg text-white font-semibold transition duration-300 ease-in-out hover:bg-red-700 shadow-md">
                                 Delete
                             </button>
@@ -111,4 +116,13 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            // button delete
+            document.getElementById('deleteButton').addEventListener('click', function(event) {
+                if (!confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                    event.preventDefault();
+                }
+            });
+        </script>
 </x-app-layout>

@@ -21,7 +21,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/storeData', [MasterController::class, 'storeData'])->name('storeData');
     Route::get('/createData', [MasterController::class, 'createData'])->name('createData');
     Route::get('/detailKomputer/{id}', [MasterController::class, 'detailKomputer'])->name('detailKomputer');
-    Route::get('/updateData', [MasterController::class, 'updateData'])->name('updateData');
+    Route::get('/updateData/{id}', [MasterController::class, 'updateData'])->name('updateData');
+    Route::put('/updateData/{id}', [MasterController::class, 'editData'])->name('editData');
     Route::delete('deleteData/{id}', [MasterController::class, 'deleteData'])->name('deleteData');
 
 
