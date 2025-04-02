@@ -141,11 +141,11 @@
                                 </div>
 
                                 <div class="sm:col-span-3">
-                                    <label for="ssd_hhd" class="block text-sm/6 font-medium text-gray-900">SSD/HDD
+                                    <label for="ssd_hdd" class="block text-sm/6 font-medium text-gray-900">SSD/HDD
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="ssd_hhd" id="ssd_hhd"
-                                            autocomplete="family-name" value="{{ $updateKomputer->ssd_hhd }}"
+                                        <input type="text" name="ssd_hdd" id="ssd_hdd"
+                                            autocomplete="family-name" value="{{ $updateKomputer->ssd_hdd }}"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                     </div>
                                 </div>

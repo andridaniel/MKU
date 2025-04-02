@@ -37,9 +37,18 @@
         @endif
 
         <div class="flex mb-5  justify-end">
-            <a href="{{ route('createData') }}"
-                class="bg-gray-800  p-3 shadow-lg rounded-md hover:bg-orange-500 text-white"> +
+
+            <div class="mx-5">
+                <a href="{{ route('createBarang') }}"
+                class="bg-yellow-500  p-3 shadow-lg rounded-md hover:bg-orange-500 text-white"> +
+                Tambah Data Barang</a>
+            </div>
+
+            <div class="mx-5">
+                <a href="{{ route('createData') }}"
+                class="bg-blue-500  p-3 shadow-lg rounded-md hover:bg-orange-500 text-white"> +
                 Tambah Data Komputer</a>
+            </div>
         </div>
 
 
@@ -47,9 +56,9 @@
             <p class="text-gray-600 mt-4 text-center">--Tidak Ada Data Komputer Yang Tersedia--</p>
         @endif
         <div
-            class="grid grid-cols-4 gap-4 mt-5 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-gray-600  shadow-2xl">
+            class="grid rounded-md grid-cols-4 gap-4 mt-5 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-gray-600  shadow-2xl">
             @foreach ($data as $item => $value)
-                <div class="rounded-md bg-gray-400 shadow-lg m-2 ">
+                <div class="rounded-md bg-gray-400  shadow-lg m-2 ">
 
                     <div class="rounded-t-md  h-[180px] bg-gray-400 overflow-hidden p-1">
                         <img src="{{ $value->images }}" class="w-full h-full object-cover rounded-md"

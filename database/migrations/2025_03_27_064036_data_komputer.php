@@ -11,22 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dataKomputers', function (Blueprint $table) {
+        Schema::create('data_komputer', function (Blueprint $table) {
             $table->id();
             $table->string('nama_komputer');
             $table->string('ip_address');
             $table->string('sistem_operasi');
             $table->string('ruangan');
-            $table->string('monitor');
-            $table->string('keyboard');
-            $table->string('ram');
-            $table->string('prosesor');
-            $table->string('ssd_hhd');
-            $table->string('motherboard');
-            $table->string('lan_card');
+            $table->foreignId('id_monitor')->constrained('barangs')->onDelete('cascade');
+            $table->foreignId('id_keyboard')->constrained('barangs')->onDelete('cascade');
+            $table->foreignId('id_ram')->constrained('barangs')->onDelete('cascade');
+            $table->foreignId('id_prosesor')->constrained('barangs')->onDelete('cascade');
+            $table->foreignId('id_ssd_hdd')->constrained('barangs')->onDelete('cascade');
+            $table->foreignId('id_motherboard')->constrained('barangs')->onDelete('cascade');
+            $table->foreignId('id_lan_card')->constrained('barangs')->onDelete('cascade');
             $table->string('keterangan');
             $table->string('images');
             $table->timestamps();
+
         });
         
         
@@ -37,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dataKomputers');
+        Schema::dropIfExists('data_komputer');
     }
 };

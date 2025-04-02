@@ -9,19 +9,19 @@ class Komputer extends Model
 
 
 {
-    protected $table = 'dataKomputers';
+    protected $table = 'data_komputer';
     protected $fillable = [
         'nama_komputer',
         'ip_address',
         'sistem_operasi',
         'ruangan',
-        'monitor',
-        'keyboard',
-        'ram',
-        'prosesor',
-        'ssd_hhd',
-        'motherboard',
-        'lan_card',
+        'id_monitor',
+        'id_keyboard',
+        'id_ram',
+        'id_prosesor',
+        'id_ssd_hdd',
+        'id_motherboard',
+        'id_lan_card',
         'keterangan',
         'images',
     ];

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\BarangController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,6 +25,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/updateData/{id}', [MasterController::class, 'updateData'])->name('updateData');
     Route::put('/updateData/{id}', [MasterController::class, 'editData'])->name('editData');
     Route::delete('deleteData/{id}', [MasterController::class, 'deleteData'])->name('deleteData');
+
+    Route::get('/createBarang',[BarangController::class, 'showBarang'])->name('createBarang');
+    Route::post('/storeBarang',[BarangController::class, 'storeBarang'])->name('storeBarang');
 
 
 

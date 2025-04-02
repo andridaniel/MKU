@@ -65,59 +65,100 @@
                                 </div>
 
                                 <div class="sm:col-span-3">
-                                    <label for="monitor" class="block text-sm/6 font-medium text-gray-900">Monitor
-                                        Komputer</label>
+                                    <label for="lan_card" class="block text-sm/6 font-medium text-gray-900">Monitor Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="monitor" id="monitor" autocomplete="family-name"
+                                        <select name="lan_card" id="lan_card"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                            <option disabled selected> --Pilih Jenis Monitor Komputer--</option>
+                                            <option value="LAN card kabel">LAN card kabel</option>
+                                            <option value="LAN card fiber optic ">LAN card fiber optic </option>
+                                            <option value="LAN card nirkabel">LAN card nirkabel</option>
+                                            <option value="LAN card tertanam ">LAN card tertanam </option>
+                                        </select>
+
                                     </div>
                                 </div>
 
 
                                 <div class="sm:col-span-3">
-                                    <label for="keyboard" class="block text-sm/6 font-medium text-gray-900">Keyboard
+                                    <label for="lan_card" class="block text-sm/6 font-medium text-gray-900">Keyboard
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="keyboard" id="keyboard" autocomplete="family-name"
+                                        <select name="lan_card" id="lan_card"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                            <option disabled selected> --Pilih Jenis Keyboard Komputer--</option>
+                                            <option value="LAN card kabel">LAN card kabel</option>
+                                            <option value="LAN card fiber optic ">LAN card fiber optic </option>
+                                            <option value="LAN card nirkabel">LAN card nirkabel</option>
+                                            <option value="LAN card tertanam ">LAN card tertanam </option>
+                                        </select>
+
                                     </div>
                                 </div>
 
 
                                 <div class="sm:col-span-3">
-                                    <label for="ram" class="block text-sm/6 font-medium text-gray-900">Ram
+                                    <label for="lan_card" class="block text-sm/6 font-medium text-gray-900">Ram
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="ram" id="ram" autocomplete="family-name"
+                                        <select name="lan_card" id="lan_card"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                            <option disabled selected> --Pilih Jenis Ram Komputer--</option>
+                                            <option value="LAN card kabel">LAN card kabel</option>
+                                            <option value="LAN card fiber optic ">LAN card fiber optic </option>
+                                            <option value="LAN card nirkabel">LAN card nirkabel</option>
+                                            <option value="LAN card tertanam ">LAN card tertanam </option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="sm:col-span-3">
+                                    <label for="lan_card" class="block text-sm/6 font-medium text-gray-900">Prosessor
+                                        Komputer</label>
+                                    <div class="mt-2">
+                                        <select name="lan_card" id="lan_card"
+                                            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                            <option disabled selected> --Pilih Jenis Prosessor Komputer--</option>
+                                            <option value="LAN card kabel">LAN card kabel</option>
+                                            <option value="LAN card fiber optic ">LAN card fiber optic </option>
+                                            <option value="LAN card nirkabel">LAN card nirkabel</option>
+                                            <option value="LAN card tertanam ">LAN card tertanam </option>
+                                        </select>
+
                                     </div>
                                 </div>
 
                                 <div class="sm:col-span-3">
-                                    <label for="prosesor" class="block text-sm/6 font-medium text-gray-900">Prosesor
+                                    <label for="lan_card" class="block text-sm/6 font-medium text-gray-900">SSD HDD
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="prosesor" id="prosesor" autocomplete="family-name"
+                                        <select name="lan_card" id="lan_card"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                            <option disabled selected> --Pilih Jenis SSD HDD Komputer--</option>
+                                            <option value="LAN card kabel">LAN card kabel</option>
+                                            <option value="LAN card fiber optic ">LAN card fiber optic </option>
+                                            <option value="LAN card nirkabel">LAN card nirkabel</option>
+                                            <option value="LAN card tertanam ">LAN card tertanam </option>
+                                        </select>
+
                                     </div>
                                 </div>
 
                                 <div class="sm:col-span-3">
-                                    <label for="ssd_hhd" class="block text-sm/6 font-medium text-gray-900">SSD/HDD
+                                    <label for="lan_card" class="block text-sm/6 font-medium text-gray-900">Motherboard
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="ssd_hhd" id="ssd_hhd" autocomplete="family-name"
+                                        <select name="lan_card" id="lan_card"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                                    </div>
-                                </div>
+                                            <option disabled selected> --Pilih Jenis Motherboard Komputer--</option>
+                                            <option value="LAN card kabel">LAN card kabel</option>
+                                            <option value="LAN card fiber optic ">LAN card fiber optic </option>
+                                            <option value="LAN card nirkabel">LAN card nirkabel</option>
+                                            <option value="LAN card tertanam ">LAN card tertanam </option>
+                                        </select>
 
-                                <div class="sm:col-span-3">
-                                    <label for="motherboard"
-                                        class="block text-sm/6 font-medium text-gray-900">Motherboard Komputer</label>
-                                    <div class="mt-2">
-                                        <input type="text" name="motherboard" id="motherboard"
-                                            autocomplete="family-name"
-                                            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                     </div>
                                 </div>
 

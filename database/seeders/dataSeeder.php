@@ -18,18 +18,18 @@ class dataSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('dataKomputers')->insert([
+        DB::table('data_komputer')->insert([
             'nama_komputer' => 'Asus',
             'ip_address' => '38.0.101.76',
             'sistem_operasi' => 'Windows 10',
             'ruangan' => 'Ruang IT',
-            'monitor' => 'Asus',
-            'keyboard' => 'Asus',
-            'ram' => 'Asus',
-            'prosesor' => 'Asus',
-            'ssd_hhd' => 'Asus',
-            'motherboard' => 'Asus',
-            'lan_card' => 'Asus',
+            'id_monitor' => '1',
+            'id_keyboard' => '1',
+            'id_ram' => '1',
+            'id_prosesor' => '1',
+            'id_ssd_hdd' => '1',
+            'id_motherboard' => '1',
+            'id_lan_card' => '1',
             'keterangan' => 'Asus',
             'images' => 'Asus',
         ]);

@@ -4,7 +4,7 @@
 
             <div class="my-8 flex justify-between">
 
-                <h1 class="text-2xl font-bold">Detail Komputer</h1>
+                <h1 class="text-2xl font-bold ">Detail Komputer</h1>
 
                 <div class="flex mb-5">
                     <a href=" {{ route('dataKomputer') }} "
@@ -79,7 +79,7 @@
                             <div class="mx-2">{{ $detailKomputer->prosesor }}</div>
 
                             <label for="" class="font-bold">SSD/HDD Komputer</label>
-                            <div class="mx-2">{{ $detailKomputer->ssd_hhd }}</div>
+                            <div class="mx-2">{{ $detailKomputer->ssd_hdd }}</div>
 
                             <label for="" class="font-bold">Motherboard Komputer</label>
                             <div class="mx-2">{{ $detailKomputer->motherboard }}</div>
