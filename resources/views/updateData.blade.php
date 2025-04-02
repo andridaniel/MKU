@@ -44,9 +44,8 @@
                 <div class="border-b border-gray-900/10 pb-12">
 
                     <div class="p-5 pt-12 flex justify-end   ">
-                        <a href="{{ route('dataKomputer') }}"
-                            class="bg-blue-500 rounded-md hover:bg-orange-500 p-3 text-white shadow-xl">Lihat Data
-                            Komputer</a>
+                        <a href="{{ route('detailKomputer', ['id' => $updateKomputer->id]) }}"
+                            class="bg-blue-500 rounded-md hover:bg-orange-500 p-2 px-10 text-white shadow-xl">Kembali</a>
                     </div>
 
                     <div class=" mx-5">
