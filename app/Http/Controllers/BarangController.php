@@ -25,7 +25,7 @@ class BarangController extends Controller
 
         Barang::create($dataBarang);
 
-        return redirect()->route('createBarang')->with('succes', 'Data Barang Berhasil Ditambahkan.');
+        return redirect()->route('createBarang')->with('success', 'Data Barang Berhasil Ditambahkan.');
     }
 
 

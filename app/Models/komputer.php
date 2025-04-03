@@ -27,4 +27,9 @@ class Komputer extends Model
     ];
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class, 'id_monitor');
+    }
 }

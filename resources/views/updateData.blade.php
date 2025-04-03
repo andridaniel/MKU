@@ -58,6 +58,7 @@
                         <div class="sm:col-span-4">
                             <div class="">
 
+                                {{-- nama Komputer --}}
                                 <div class="sm:col-span-3">
                                     <label for="nama_komputer" class="block text-sm/6 font-medium text-gray-900">Nama
                                         Komputer</label>
@@ -68,6 +69,7 @@
                                     </div>
                                 </div>
 
+                                {{-- ip address komputer --}}
                                 <div class="sm:col-span-3">
                                     <label for="ip_address" class="block text-sm/6 font-medium text-gray-900">IP
                                         Komputer</label>
@@ -78,6 +80,7 @@
                                     </div>
                                 </div>
 
+                                {{-- sistem operasi komputer --}}
                                 <div class="sm:col-span-3">
                                     <label for="sistem_operasi" class="block text-sm/6 font-medium text-gray-900">Sistem
                                         Operasi Komputer</label>
@@ -88,6 +91,7 @@
                                     </div>
                                 </div>
 
+                                {{-- ruangan komputer --}}
                                 <div class="sm:col-span-3">
                                     <label for="ruangan" class="block text-sm/6 font-medium text-gray-900">Ruangan
                                         Komputer</label>
@@ -98,93 +102,123 @@
                                     </div>
                                 </div>
 
+                                {{-- Monitor --}}
                                 <div class="sm:col-span-3">
-                                    <label for="monitor" class="block text-sm/6 font-medium text-gray-900">Monitor
+                                    <label for="id_monitor" class="block text-sm/6 font-medium text-gray-900">Monitor
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="monitor" id="monitor" autocomplete="family-name"
-                                            value="{{ $updateKomputer->monitor }}"
+                                        <select name="id_monitor" id="id_monitor"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                            @foreach ($monitor as $item)
+                                                <option value="{{ $item->id }}" 
+                                                    {{ $updateKomputer->id_monitor == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->nama_brg }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
 
+                                {{-- keyboard --}}
                                 <div class="sm:col-span-3">
-                                    <label for="keyboard" class="block text-sm/6 font-medium text-gray-900">Keyboard
+                                    <label for="id_keyboard" class="block text-sm/6 font-medium text-gray-900">Keyboard
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="keyboard" id="keyboard" autocomplete="family-name"
-                                            value="{{ $updateKomputer->keyboard }}"
+                                        <select name="id_keyboard" id="id_keyboard"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                            @foreach ($keyboard as $item)
+                                                <option value="{{ $item->id}}"
+                                                    {{ $updateKomputer->id_keyboard == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->nama_brg }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
-
+                                {{-- Ram Komputer --}}
                                 <div class="sm:col-span-3">
-                                    <label for="ram" class="block text-sm/6 font-medium text-gray-900">Ram
+                                    <label for="id_ram" class="block text-sm/6 font-medium text-gray-900">Ram
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="ram" id="ram"
-                                            autocomplete="family-name" value="{{ $updateKomputer->ram }}"
+                                        <select name="id_ram" id="id_ram"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                            @foreach ($ram as $item)
+                                                <option value="{{ $item->id }}"
+                                                    {{ $updateKomputer->id_ram == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->nama_brg }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
+                                {{-- prosesor komputer --}}
                                 <div class="sm:col-span-3">
-                                    <label for="prosesor" class="block text-sm/6 font-medium text-gray-900">Prosesor
+                                    <label for="id_prosesor" class="block text-sm/6 font-medium text-gray-900">Prosesor
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="prosesor" id="prosesor"
-                                            autocomplete="family-name" value="{{ $updateKomputer->prosesor }}"
+                                        <select name="id_prosesor" id="id_prosesor"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                            @foreach ($prosesor as $item)
+                                                <option value="{{ $item->id }}"
+                                                    {{ $updateKomputer->id_prosesor == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->nama_brg }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
+                                {{-- SSD-HDD Komputer --}}
                                 <div class="sm:col-span-3">
-                                    <label for="ssd_hdd" class="block text-sm/6 font-medium text-gray-900">SSD/HDD
+                                    <label for="id_ssd_hdd" class="block text-sm/6 font-medium text-gray-900">SSD/HDD
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="ssd_hdd" id="ssd_hdd"
-                                            autocomplete="family-name" value="{{ $updateKomputer->ssd_hdd }}"
+                                        <select name="id_ssd_hdd" id="id_ssd_hdd"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                            @foreach ($ssd_hdd as $item)
+                                                <option value="{{ $item->id}}"
+                                                    {{ $updateKomputer->id_ssd_hdd == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->nama_brg }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
+                                {{-- Motherboard Komputer --}}
                                 <div class="sm:col-span-3">
-                                    <label for="motherboard"
+                                    <label for="id_motherboard"
                                         class="block text-sm/6 font-medium text-gray-900">Motherboard Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="motherboard" id="motherboard"
-                                            autocomplete="family-name" value="{{ $updateKomputer->motherboard }}"
+                                        <select name="id_motherboard" id="id_motherboard"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                            @foreach ($motherboard as $item)
+                                                <option value="{{ $item->id}}"
+                                                    {{ $updateKomputer->id_motherboard == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->nama_brg }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
+                                {{-- LAN CARD Komputer --}}
                                 <div class="sm:col-span-3">
-                                    <label for="lan_card" class="block text-sm/6 font-medium text-gray-900">
+                                    <label for="id_lan_card" class="block text-sm/6 font-medium text-gray-900">
                                         Lan Card Komputer
                                     </label>
                                     <div class="mt-2">
-                                        <select name="lan_card" id="lan_card"
+                                        <select name="id_lan_card" id="id_lan_card"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-
-                                            <option disabled>--Pilih Lan Card--</option>
-                                            <option value="LAN card kabel"
-                                                {{ $updateKomputer->lan_card == 'LAN card kabel' ? 'selected' : '' }}>
-                                                LAN card kabel
-                                            </option>
-                                            <option value="LAN card fiber optic"
-                                                {{ $updateKomputer->lan_card == 'LAN card fiber optic' ? 'selected' : '' }}>
-                                                LAN card fiber optic
-                                            </option>
-                                            <option value="LAN card nirkabel"
-                                                {{ $updateKomputer->lan_card == 'LAN card nirkabel' ? 'selected' : '' }}>
-                                                LAN card nirkabel
-                                            </option>
-                                            <option value="LAN card tertanam"
-                                                {{ $updateKomputer->lan_card == 'LAN card tertanam' ? 'selected' : '' }}>
-                                                LAN card tertanam
-                                            </option>
+                                            @foreach ($lan_card as $item)
+                                                <option value="{{ $item->id}}"
+                                                    {{ $updateKomputer->id_lan_card == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->nama_brg }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -194,7 +228,7 @@
 
                         <div>
 
-                            {{-- about --}}
+                            {{-- Keterangan Komputer --}}
                             <div class="col-span-full">
                                 <label for="keterangan" class="block text-sm/6 font-medium text-gray-900">Keterangan
                                     Komputer</label>

@@ -4,7 +4,7 @@
 
             <div class="my-8 flex justify-between">
 
-                <h1 class="text-2xl font-bold ">Detail Komputer</h1>
+                <h1 class="text-2xl font-bold  xs:text-xl">Detail Komputer</h1>
 
                 <div class="flex mb-5">
                     <a href=" {{ route('dataKomputer') }} "
@@ -52,40 +52,40 @@
 
 
 
-                <div class="p-10">
-                    <img src="{{ url($detailKomputer->images) }}" width="500" alt="gambar komputer">
+                <div class="p-5 rounded-md">
+                    <img src="{{ url($detailKomputer->images) }}" width="500" class="rounded-md" alt="gambar komputer">
                 </div>
-                <div class="m-10">
+                <div class="m-5">
                     <div class="mx-auto">
 
 
                         <div class=" bg-slate-100 rounded-md p-5">
-                            <label for="" class="font-bold">Keterangan</label>
-                            <div class="mx-2">{{ $detailKomputer->keterangan }}</div>
+                            <label for="" class="font-bold ">Keterangan</label>
+                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $detailKomputer->keterangan }}</div>
 
-                            <label for="" class="font-bold">Ruangan Komputer</label>
-                            <div class="mx-2">{{ $detailKomputer->ruangan }}</div>
+                            <label for="" class="font-bold ">Ruangan Komputer</label>
+                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $detailKomputer->ruangan }}</div>
 
                             <label for="" class="font-bold">Monitor Komputer</label>
-                            <div class="mx-2">{{ $detailKomputer->monitor }}</div>
+                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $monitor->nama_brg ?? 'Tidak tersedia' }}</div>
 
                             <label for="" class="font-bold">Keyboard Komputer</label>
-                            <div class="mx-2">{{ $detailKomputer->keyboard }}</div>
+                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $keyboard->nama_brg ?? 'Tidak tersedia' }}</div>
 
                             <label for="" class="font-bold">Ram Komputer</label>
-                            <div class="mx-2">{{ $detailKomputer->ram }}</div>
+                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $ram->nama_brg ?? 'Tidak tersedia' }}</div>
 
                             <label for="" class="font-bold">Processor Komputer</label>
-                            <div class="mx-2">{{ $detailKomputer->prosesor }}</div>
+                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $prosesor->nama_brg ?? 'Tidak tersedia' }}</div>
 
                             <label for="" class="font-bold">SSD/HDD Komputer</label>
-                            <div class="mx-2">{{ $detailKomputer->ssd_hdd }}</div>
+                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $ssd_hdd->nama_brg ?? 'Tidak tersedia' }}</div>
 
                             <label for="" class="font-bold">Motherboard Komputer</label>
-                            <div class="mx-2">{{ $detailKomputer->motherboard }}</div>
+                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $motherboard->nama_brg ?? 'Tidak tersedia' }}</div>
 
                             <label for="" class="font-bold">Lan Card Komputer</label>
-                            <div class="mx-2">{{ $detailKomputer->lan_card }}</div>
+                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $lan_card->nama_brg ?? 'Tidak tersedia' }}</div>
 
                         </div>
 

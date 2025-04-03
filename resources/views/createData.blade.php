@@ -25,6 +25,7 @@
                         <div class="sm:col-span-4">
                             <div class="">
 
+                                {{-- Nama Komputer --}}
                                 <div class="sm:col-span-3">
                                     <label for="nama_komputer" class="block text-sm/6 font-medium text-gray-900">Nama
                                         Komputer</label>
@@ -35,6 +36,7 @@
                                     </div>
                                 </div>
 
+                                {{-- IP_Address Komputer --}}
                                 <div class="sm:col-span-3">
                                     <label for="ip_address" class="block text-sm/6 font-medium text-gray-900">IP
                                         Komputer</label>
@@ -45,6 +47,7 @@
                                     </div>
                                 </div>
 
+                                {{-- Sistem Operasi Komputer --}}
                                 <div class="sm:col-span-3">
                                     <label for="sistem_operasi" class="block text-sm/6 font-medium text-gray-900">Sistem
                                         Operasi Komputer</label>
@@ -55,6 +58,7 @@
                                     </div>
                                 </div>
 
+                                {{-- Ruangan Komputer --}}
                                 <div class="sm:col-span-3">
                                     <label for="ruangan" class="block text-sm/6 font-medium text-gray-900">Ruangan
                                         Komputer</label>
@@ -64,115 +68,114 @@
                                     </div>
                                 </div>
 
+                                {{-- Monitor Komputer --}}
                                 <div class="sm:col-span-3">
-                                    <label for="lan_card" class="block text-sm/6 font-medium text-gray-900">Monitor Komputer</label>
+                                    <label for="id_monitor" class="block text-sm/6 font-medium text-gray-900">Monitor Komputer</label>
                                     <div class="mt-2">
-                                        <select name="lan_card" id="lan_card"
+                                        <select name="id_monitor" id="id_monitor"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                             <option disabled selected> --Pilih Jenis Monitor Komputer--</option>
-                                            <option value="LAN card kabel">LAN card kabel</option>
-                                            <option value="LAN card fiber optic ">LAN card fiber optic </option>
-                                            <option value="LAN card nirkabel">LAN card nirkabel</option>
-                                            <option value="LAN card tertanam ">LAN card tertanam </option>
+                                            @foreach ($monitor as $item => $value)
+                                                <option class="text-gray-900" value="{{ $value->id }}">{{ $value->nama_brg }}</option>
+                                            @endforeach
+                                            
                                         </select>
 
                                     </div>
                                 </div>
 
-
+                                {{-- keyboard Komputer --}}
                                 <div class="sm:col-span-3">
-                                    <label for="lan_card" class="block text-sm/6 font-medium text-gray-900">Keyboard
+                                    <label for="id_keyboard" class="block text-sm/6 font-medium text-gray-900">Keyboard
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <select name="lan_card" id="lan_card"
+                                        <select name="id_keyboard" id="id_keyboard"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                             <option disabled selected> --Pilih Jenis Keyboard Komputer--</option>
-                                            <option value="LAN card kabel">LAN card kabel</option>
-                                            <option value="LAN card fiber optic ">LAN card fiber optic </option>
-                                            <option value="LAN card nirkabel">LAN card nirkabel</option>
-                                            <option value="LAN card tertanam ">LAN card tertanam </option>
+                                            @foreach ($keyboard as $item => $value)
+                                                <option class="text-gray-900" value="{{ $value->id }}">{{ $value->nama_brg }}</option>
+                                            @endforeach
                                         </select>
 
                                     </div>
                                 </div>
 
-
+                                {{-- RAM Komputer --}}
                                 <div class="sm:col-span-3">
-                                    <label for="lan_card" class="block text-sm/6 font-medium text-gray-900">Ram
+                                    <label for="id_ram" class="block text-sm/6 font-medium text-gray-900">Ram
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <select name="lan_card" id="lan_card"
+                                        <select name="id_ram" id="id_ram"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                             <option disabled selected> --Pilih Jenis Ram Komputer--</option>
-                                            <option value="LAN card kabel">LAN card kabel</option>
-                                            <option value="LAN card fiber optic ">LAN card fiber optic </option>
-                                            <option value="LAN card nirkabel">LAN card nirkabel</option>
-                                            <option value="LAN card tertanam ">LAN card tertanam </option>
+                                            @foreach ($ram as $item => $value)
+                                                <option class="text-gray-900" value="{{ $value->id }}">{{ $value->nama_brg }}</option>
+                                            @endforeach
                                         </select>
 
                                     </div>
                                 </div>
 
-
+                                {{-- Prosesor Komputer --}}
                                 <div class="sm:col-span-3">
-                                    <label for="lan_card" class="block text-sm/6 font-medium text-gray-900">Prosessor
+                                    <label for="id_prosesor" class="block text-sm/6 font-medium text-gray-900">Prosessor
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <select name="lan_card" id="lan_card"
+                                        <select name="id_prosesor" id="id_prosesor"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                             <option disabled selected> --Pilih Jenis Prosessor Komputer--</option>
-                                            <option value="LAN card kabel">LAN card kabel</option>
-                                            <option value="LAN card fiber optic ">LAN card fiber optic </option>
-                                            <option value="LAN card nirkabel">LAN card nirkabel</option>
-                                            <option value="LAN card tertanam ">LAN card tertanam </option>
+                                            @foreach ($prosesor as $item => $value)
+                                                <option class="text-gray-900" value="{{ $value->id }}">{{ $value->nama_brg }}</option>
+                                            @endforeach
                                         </select>
 
                                     </div>
                                 </div>
 
+                                {{-- SSD-HDD Komputer --}}
                                 <div class="sm:col-span-3">
-                                    <label for="lan_card" class="block text-sm/6 font-medium text-gray-900">SSD HDD
+                                    <label for="id_ssd_hdd" class="block text-sm/6 font-medium text-gray-900">SSD HDD
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <select name="lan_card" id="lan_card"
+                                        <select name="id_ssd_hdd" id="id_ssd_hdd"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                             <option disabled selected> --Pilih Jenis SSD HDD Komputer--</option>
-                                            <option value="LAN card kabel">LAN card kabel</option>
-                                            <option value="LAN card fiber optic ">LAN card fiber optic </option>
-                                            <option value="LAN card nirkabel">LAN card nirkabel</option>
-                                            <option value="LAN card tertanam ">LAN card tertanam </option>
+                                            @foreach ($ssd_hdd as $item => $value)
+                                                <option class="text-gray-900" value="{{ $value->id }}">{{ $value->nama_brg }}</option>
+                                            @endforeach
                                         </select>
 
                                     </div>
                                 </div>
 
+                                {{-- Motherboard Komputer --}}
                                 <div class="sm:col-span-3">
-                                    <label for="lan_card" class="block text-sm/6 font-medium text-gray-900">Motherboard
+                                    <label for="id_motherboard" class="block text-sm/6 font-medium text-gray-900">Motherboard
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <select name="lan_card" id="lan_card"
+                                        <select name="id_motherboard" id="id_motherboard"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                             <option disabled selected> --Pilih Jenis Motherboard Komputer--</option>
-                                            <option value="LAN card kabel">LAN card kabel</option>
-                                            <option value="LAN card fiber optic ">LAN card fiber optic </option>
-                                            <option value="LAN card nirkabel">LAN card nirkabel</option>
-                                            <option value="LAN card tertanam ">LAN card tertanam </option>
+                                            @foreach ($motherboard as $item => $value)
+                                                <option class="text-gray-900" value="{{ $value->id }}">{{ $value->nama_brg }}</option>
+                                            @endforeach
                                         </select>
 
                                     </div>
                                 </div>
 
+                                {{-- LAN CARD Komputer --}}
                                 <div class="sm:col-span-3">
-                                    <label for="lan_card" class="block text-sm/6 font-medium text-gray-900">Lan Card
+                                    <label for="id_lan_card" class="block text-sm/6 font-medium text-gray-900">Lan Card
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <select name="lan_card" id="lan_card"
+                                        <select name="id_lan_card" id="id_lan_card"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                             <option disabled selected> --Pilih Lan Card--</option>
-                                            <option value="LAN card kabel">LAN card kabel</option>
-                                            <option value="LAN card fiber optic ">LAN card fiber optic </option>
-                                            <option value="LAN card nirkabel">LAN card nirkabel</option>
-                                            <option value="LAN card tertanam ">LAN card tertanam </option>
+                                            @foreach ($lan_card as $item => $value)
+                                                <option class="text-gray-900" value="{{ $value->id }}">{{ $value->nama_brg }}</option>
+                                            @endforeach
+                                       
                                         </select>
 
                                     </div>
@@ -182,7 +185,7 @@
 
                         <div>
 
-                            {{-- about --}}
+                            {{-- Keterangan Komputer --}}
                             <div class="col-span-full">
                                 <label for="keterangan" class="block text-sm/6 font-medium text-gray-900">Keterangan
                                     Komputer</label>

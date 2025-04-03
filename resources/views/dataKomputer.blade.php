@@ -36,15 +36,15 @@
             </div>
         @endif
 
-        <div class="flex mb-5  justify-end">
+        <div class="flex mb-5 justify-end xs:flex xs:flex-col ">
 
-            <div class="mx-5">
+            <div class="mx-2 xs:my-5">
                 <a href="{{ route('createBarang') }}"
-                class="bg-yellow-500  p-3 shadow-lg rounded-md hover:bg-orange-500 text-white"> +
+                class="bg-yellow-500 xs:px-5  p-3 shadow-lg rounded-md hover:bg-orange-500 text-white"> +
                 Tambah Data Barang</a>
             </div>
 
-            <div class="mx-5">
+            <div class="mx-2  xs:my-5">
                 <a href="{{ route('createData') }}"
                 class="bg-blue-500  p-3 shadow-lg rounded-md hover:bg-orange-500 text-white"> +
                 Tambah Data Komputer</a>
