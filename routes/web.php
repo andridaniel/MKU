@@ -29,6 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/createBarang',[BarangController::class, 'showBarang'])->name('createBarang');
     Route::post('/storeBarang',[BarangController::class, 'storeBarang'])->name('storeBarang');
 
+    Route::delete('deleteBarang/{id}', [BarangController::class, 'deleteBarang'])->name('deleteBarang');
+    Route::get('/updateBarang/{id}', [BarangController::class, 'updateBarang'])->name('updateBarang');
+    Route::put('/updateBarang/{id}', [BarangController::class, 'editBarang'])->name('editBarang');
 
 
 });

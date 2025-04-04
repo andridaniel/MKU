@@ -41,7 +41,7 @@
                                     <label for="ip_address" class="block text-sm/6 font-medium text-gray-900">IP
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="ip_address" id="ip_address"
+                                        <input type="text" name="ip_address" id="ip_address" pattern="^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}$" placeholder="192.168.0.1"
                                             autocomplete="family-name"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                     </div>
