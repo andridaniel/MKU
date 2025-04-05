@@ -1,15 +1,13 @@
 <x-app-layout>
     <div class="m-5 bg-gray-200 rounded-md">
-
-
         <form action="{{ route('storeData') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="space-y-12">
                 <div class="border-b border-gray-900/10 pb-12">
 
-                    <div class="p-5 pt-12 flex justify-end   ">
+                    <div class="p-5 pt-12 flex justify-start xs:pt-5 lg:pt-12 sm:pt-8  ">
                         <a href="{{ route('dataKomputer') }}"
-                            class="bg-blue-500 rounded-md hover:bg-orange-500 p-3 text-white shadow-xl">Lihat Data
+                            class="bg-gray-600 rounded-md hover:bg-orange-500 p-3 xs:px-2 xs:text-xs lg:text-sm sm:px-5  text-white shadow-xl">Lihat Data
                             Komputer</a>
                     </div>
 

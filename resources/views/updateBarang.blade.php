@@ -1,41 +1,7 @@
 <x-app-layout>
-    <div class="m-5 bg-gray-200 rounded-md">
-        @if (session()->has('success'))
-        <div id="alert-success"
-            class="flex items-end justify-between w-full max-w-lg  p-4 mb-4 text-sm text-white bg-green-600 rounded-lg shadow-md">
-            <div class="flex items-center">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"></path>
-                </svg>
-                <span>{{ session()->get('success') }}</span>
-            </div>
-            <button onclick="document.getElementById('alert-success').remove()"
-                class="ml-4 text-white focus:outline-none">
-                ✖
-            </button>
-        </div>
-    @endif
-
-    @if (session()->has('error'))
-        <div id="alert-error"
-            class="flex items-end justify-between w-full max-w-lg  p-4 mb-4 text-sm text-white bg-red-600 rounded-lg shadow-md">
-            <div class="flex items-center">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 9v2m0 4h.01m-6.938 4A9 9 0 1 1 21 12a9 9 0 0 1-15.938 7z"></path>
-                </svg>
-                <span>{{ session()->get('error') }}</span>
-            </div>
-            <button onclick="document.getElementById('alert-error').remove()"
-                class="ml-4 text-white focus:outline-none">
-                ✖
-            </button>
-        </div>
-    @endif
-
+    
+      
+   
     <div class="flex justify-between bg-orange-400 rounded-t-md">
         <div class="m-5 text-2xl ">
             <h3 class="py-2 text-white xs:text-xs sm:text-sm lg:text-xl ">UPDATE DATA BARANG KOMPUTER</h3>
@@ -49,9 +15,7 @@
     </div>
     
        
-      
-       
-
+    <div class="m-5 bg-gray-200 rounded-md">
         <form action="{{ route('editBarang', ['id' => $dataBarang->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
@@ -92,11 +56,13 @@
                         <div class="mt-2">
                             <select name="jns_brg" id="jns_brg"
                                 class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                                @foreach ($Barang as $barang)
-                                    <option value="{{ $barang->jns_brg }}" {{ $dataBarang->jns_brg == $barang->jns_brg ? 'selected' : '' }}>
-                                        {{ $barang->jns_brg }}
-                                    </option>
-                                @endforeach
+                                <option value="Monitor" {{ $dataBarang->jns_brg == 'Monitor' ? 'selected' : '' }}>Monitor</option>
+                                <option value="Keyboard" {{ $dataBarang->jns_brg == 'Keyboard' ? 'selected' : '' }}>Keyboard</option>
+                                <option value="Ram" {{ $dataBarang->jns_brg == 'Ram' ? 'selected' : '' }}>Ram</option>
+                                <option value="Prosesor" {{ $dataBarang->jns_brg == 'Prosesor' ? 'selected' : '' }}>Prosesor</option>
+                                <option value="SSD/HDD" {{ $dataBarang->jns_brg == 'SSD/HDD' ? 'selected' : '' }}>SSD/HDD</option>
+                                <option value="Motherboard" {{ $dataBarang->jns_brg == 'Motherboard' ? 'selected' : '' }}>Motherboard</option>
+                                <option value="Lan Card" {{ $dataBarang->jns_brg == 'Lan Card' ? 'selected' : '' }}>Lan Card</option>
                             </select>
                         </div>
                     </div>

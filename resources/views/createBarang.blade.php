@@ -1,14 +1,16 @@
 <x-app-layout>
   
     <div class="m-5 bg-gray-200 rounded-md">
-        <div class="flex justify-between">
-            <div class="m-5 text-2xl">
-                <h3 class="py-2">Tambah Data Barang</h3>
+        <div class="flex justify-between bg-blue-500 rounded-t-md">
+            <div class="m-5 text-2xl ">
+                <h3 class="py-2 text-white xs:text-xs sm:text-sm lg:text-xl ">TAMBAH DATA BARANG KOMPUTER</h3>
             </div>
-                <div class="p-5  flex justify-end   ">
-                    <a href="{{ route('dataKomputer') }}"
-                        class="bg-blue-500 rounded-md hover:bg-orange-500 p-3 px-10 text-white shadow-xl">Kembali </a>
-                </div>
+    
+            <div class="m-5  flex justify-end  ">
+                <a href="{{ route('dataKomputer') }}"
+                    class="bg-gray-600 rounded-md hover:bg-gray-500 p-3 px-10 text-white shadow-xl">Kembali </a>
+            </div>
+    
         </div>
 
         <div class="m-5">
@@ -98,7 +100,7 @@
                 <td class="border border-gray-950">{{$data->jns_brg}}</td>
                 <td class="border border-gray-950">
 
-                    <div class="flex justify-center">
+                    <div class="flex justify-center xs:flex xs:flex-col lg:flex lg:flex-row">
 
                         <div class="m-2 basis-1/2">
                             <form action="{{ route('editBarang', $data->id) }}" method="post">

@@ -8,7 +8,7 @@
 
                 <div class="flex mb-5">
                     <a href=" {{ route('dataKomputer') }} "
-                        class="bg-blue-500  p-2 rounded-md hover:bg-orange-500 text-white px-10"> Kembali</a>
+                        class="bg-gray-600  p-2 rounded-md hover:bg-orange-500 text-white px-10"> Kembali</a>
                 </div>
             </div>
 
