@@ -2,14 +2,17 @@
     <div class="m-5">
         <div class="">
 
-            <div class="my-8 flex justify-between">
+            <div class="flex mb-5">
+                <a href=" {{ route('dataKomputer') }} "
+                    class="bg-gray-600  p-2 rounded-md hover:bg-gray-700 text-white px-6"> 
+                    <i class="fa-solid fa-backward pe-2"></i> 
+                    Kembali</a>
+            </div>
 
-                <h1 class="text-2xl font-bold  xs:text-xl">Detail Komputer</h1>
+            
 
-                <div class="flex mb-5">
-                    <a href=" {{ route('dataKomputer') }} "
-                        class="bg-gray-600  p-2 rounded-md hover:bg-orange-500 text-white px-10"> Kembali</a>
-                </div>
+            <div class="my-8 flex justify-start ">
+                <h1 class="text-2xl font-bold  xs:text-3xl"> Detail Komputer</h1>       
             </div>
 
             <div class="grid grid-cols-2 xs:grid-cols-1 md:grid-cols-2  sm:grid-cols-1 bg-gray-300 rounded-md">
@@ -59,7 +62,7 @@
                             @method('get')
                             <button type="submit"
                                 class="w-full bg-orange-500 p-3 rounded-lg text-white font-semibold transition duration-300 ease-in-out hover:bg-red-700 shadow-md">
-                                Update
+                                Edit Data
                             </button>
                         </form>
 
@@ -69,7 +72,7 @@
                             @method('DELETE')
                             <button type="submit" id="deleteButton"
                                 class="w-full bg-red-600 p-3 rounded-lg text-white font-semibold transition duration-300 ease-in-out hover:bg-red-700 shadow-md">
-                                Delete
+                                Hapus Data
                             </button>
                         </form>
                     </div>

@@ -7,9 +7,11 @@
             <div class="space-y-12">
                 <div class="border-b border-gray-900/10 pb-12">
 
-                    <div class="p-5 pt-12 flex justify-end   ">
+                    <div class="p-5 pt-12 flex justify-start">
                         <a href="{{ route('detailKomputer', ['id' => $updateKomputer->id]) }}"
-                            class="bg-blue-500 rounded-md hover:bg-orange-500 p-2 px-10 text-white shadow-xl">Kembali</a>
+                            class="bg-gray-600 rounded-md hover:bg-gray-700 p-2 px-6 text-white shadow-xl">
+                            <i class="fa-solid fa-backward pe-2"></i>
+                            Kembali</a>
                     </div>
 
                     <div class=" mx-5">
@@ -251,7 +253,7 @@
                             <div>
                                 <div class="mt-6 flex items-center justify-end gap-x-6">
                                     <button type="submit"
-                                        class="bg-blue-500 hover:bg-orange-500  p-2 rounded-md w-full text-white">Simpan</button>
+                                        class="bg-blue-500 hover:bg-blue-600  p-2 rounded-md w-full text-white">Simpan</button>
                                 </div>
                             </div>
 

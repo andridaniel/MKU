@@ -7,16 +7,16 @@
 
                     <div class="p-5 pt-12 flex justify-start xs:pt-5 lg:pt-12 sm:pt-8  ">
                         <a href="{{ route('dataKomputer') }}"
-                            class="bg-gray-600 rounded-md hover:bg-orange-500 p-3 xs:px-2 xs:text-xs lg:text-sm sm:px-5  text-white shadow-xl">Lihat Data
-                            Komputer</a>
+                            class="bg-gray-600 rounded-md hover:bg-orange-500 p-3 xs:px-2 xs:text-xs lg:text-sm sm:px-5  text-white shadow-xl">
+                            <i class="fa-solid fa-computer mx-2"></i>
+                            Lihat Data Komputer</a>
                     </div>
 
                     <div class=" mx-5">
-                        <h2 class="text-base/7 font-semibold text-gray-900">Form Tamabah Data Komputer</h2>
+                        <h2 class="text-base/7 font-semibold text-gray-900">Form Tambah Data Komputer</h2>
 
                         <p class="mt-1 text-sm/6 text-gray-600 ">Silahkan isi form di bawah ini untuk menambahkan
-                            data
-                            Komputer</p>
+                            data Komputer</p>
                     </div>
 
                     <div class="mt-1 grid gap-y-8 sm:grid-cols-1 p-5">
@@ -29,7 +29,7 @@
                                         Komputer</label>
                                     <div class="mt-2">
                                         <input type="text" name="nama_komputer" id="nama_komputer"
-                                            autocomplete="given-name"
+                                            autocomplete="given-name" placeholder="Masukan Nama Komputer"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
                                     <label for="sistem_operasi" class="block text-sm/6 font-medium text-gray-900">Sistem
                                         Operasi Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="sistem_operasi" id="sistem_operasi"
+                                        <input type="text" name="sistem_operasi" id="sistem_operasi" placeholder="Masukan Sistem Operasi Komputer"
                                             autocomplete="family-name"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                     </div>
@@ -61,7 +61,7 @@
                                     <label for="ruangan" class="block text-sm/6 font-medium text-gray-900">Ruangan
                                         Komputer</label>
                                     <div class="mt-2">
-                                        <input type="text" name="ruangan" id="ruangan" autocomplete="family-name"
+                                        <input type="text" name="ruangan" id="ruangan" autocomplete="family-name" placeholder="Masukan Ruangan Komputer"
                                             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                     </div>
                                 </div>
@@ -181,6 +181,8 @@
                             </div>
                         </div>
 
+
+                        
                         <div>
 
                             {{-- Keterangan Komputer --}}
@@ -188,7 +190,7 @@
                                 <label for="keterangan" class="block text-sm/6 font-medium text-gray-900">Keterangan
                                     Komputer</label>
                                 <div class="mt-2">
-                                    <textarea name="keterangan" id="keterangan" rows="3"
+                                    <textarea name="keterangan" id="keterangan" rows="3" placeholder="Masukan Keterangan Komputer..."
                                         class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"></textarea>
                                 </div>
                             </div>

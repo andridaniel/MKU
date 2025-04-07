@@ -16,13 +16,18 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div> --}}
+
+                <div class="m-5">
+                    <h3 class="text-white text-1xl"> MKU & MKS</h3>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                        <button class="inline-flex items-center px-3 py-2  text-sm leading-4 font-medium  text-gray-100  hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                            <i class="fa-regular fa-user mx-2"></i>
                             <div>{{ Auth::user()->name }}</div>
 
                         </button>
