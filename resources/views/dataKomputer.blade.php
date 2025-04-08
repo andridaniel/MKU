@@ -19,12 +19,12 @@
         </div>
 
 
-        @if ($data->isEmpty())
+        @if ($dataKomputerPagination->isEmpty())
             <p class="text-gray-600 mt-56 text-center">--Tidak Ada Data Komputer Yang Tersedia--</p>
         @endif
 
         <div class="grid rounded-md grid-cols-4 gap-4 mt-5 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-gray-600  shadow-2xl">
-            @foreach ($data as $item => $value)
+            @foreach ($dataKomputerPagination as $item => $value)
                 <div class="rounded-md bg-gray-400  shadow-lg m-2 ">
 
                     <div class="rounded-t-md  h-[250px] bg-gray-400 overflow-hidden p-1">
@@ -53,8 +53,15 @@
 
                 </div>
             @endforeach
-        </div>
 
+            
+
+        </div>
+         {{-- pagination --}}
+             
+         <div class="flex justify-end m-2">
+            {{ $dataKomputerPagination->links() }}
+        </div>
 
     </div>
 </x-app-layout>

@@ -32,7 +32,10 @@ class BarangController extends Controller
     public function showBarang ()
     {
         $dataBarang = Barang::all();
-        return view ('createBarang', compact('dataBarang'));
+
+        $dataPagination = Barang::paginate(5);
+
+        return view ('createBarang', compact('dataBarang', 'dataPagination'));
     }
 
 

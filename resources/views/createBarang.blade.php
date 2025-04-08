@@ -83,7 +83,6 @@
                             </div>
     
     
-    
                         </div>
     
                     </div>
@@ -109,7 +108,7 @@
             <th class="border border-gray-950">Jenis Barang</th>
             <th class="border border-gray-950">Aksi</th>
  
-            @foreach ($dataBarang as $item =>$data)
+            @foreach ($dataPagination as $item =>$data)
             <tbody>
                 <td class="border border-gray-950 text-center">{{$item+1}}</td>
                 <td class="border border-gray-950 text-center">{{$data->kode_brg}}</td>
@@ -145,12 +144,27 @@
 
                     </div>
 
+                   
+
                     
                 </td>
+
+                
             </tbody>
+
             @endforeach
+
+           
         </table>
        
+         {{-- pagination --}}
+             
+                <div class="flex justify-end m-2">
+                    {{ $dataPagination->links() }}
+                </div>
+
+        </div>
     </div>
 
+   
 </x-app-layout>

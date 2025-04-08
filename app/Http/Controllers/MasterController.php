@@ -87,7 +87,9 @@ class MasterController extends Controller
     public function showData()
     {
         $data = Komputer::all();
-        return view('dataKomputer', compact('data'));
+
+        $dataKomputerPagination = Komputer::paginate(8);
+        return view('dataKomputer', compact('data', 'dataKomputerPagination'));
 
 
     }
