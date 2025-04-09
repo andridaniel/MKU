@@ -3,17 +3,17 @@
 
         <div class="flex mb-5 justify-end xs:flex xs:flex-col lg:flex-row ">
 
-            <div class="mx-2 xs:my-5">
-                <a href="{{ route('createBarang') }}"
-                class="bg-yellow-500 xs:px-5  p-3 shadow-lg rounded-md hover:bg-orange-500 text-white">
-                <i class="fa-solid fa-plus"></i>
-                Tambah Data Barang</a>
+            <div class="mx-2 xs:my-5 ">
+                <a href="{{ route('createBarang')}}"
+                class="bg-yellow-500 pe-8 p-3 w-full shadow-lg rounded-md hover:bg-orange-500 text-white">
+                <i class="fa-solid fa-database"></i>
+                Data Barang Komputer</a>
             </div>
 
             <div class="mx-2  xs:my-5">
                 <a href="{{ route('createData') }}"
-                class="bg-blue-500  p-3 shadow-lg rounded-md hover:bg-orange-500 text-white">
-                <i class="fa-solid fa-plus"></i>
+                class="bg-blue-500 w-full p-3 shadow-lg rounded-md hover:bg-orange-500 text-white">
+                <i class="fa-solid fa-folder-plus"></i>
                 Tambah Data Komputer</a>
             </div>
         </div>
@@ -36,13 +36,14 @@
                        <div class="mb-4">
                            <div class=" border-b border-gray-900/10">Nama Komputer  : {{ $value->nama_komputer }}</div>
                            <div class=" border-b border-gray-900/10">IP Address     : {{ $value->ip_address }}</div>
-                           <div class=" border-b border-gray-900/10">sistem_operasi : {{ $value->sistem_operasi }}</div>
+                           <div class=" border-b border-gray-900/10">Sistem Operasi : {{ $value->sistem_operasi }}</div>
+                           <div class=" border-b border-gray-900/10">Ruangan      : {{ $value->ruangan }}</div>
                        </div>
 
                         <div class="p-1 py-4 flex text-center ">
                             <a href=" {{ route('detailKomputer', ['id' => $value->id]) }}"
                                 class="bg-blue-500 hover:bg-orange-500  p-2 rounded-md w-full text-white">
-                                LihatDetail
+                                Lihat Detail
                                 <i class="fa-solid fa-eye text-gray-200 ms-2"></i>
                             </a>
                         </div>

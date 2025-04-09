@@ -11,8 +11,8 @@
 
             
 
-            <div class="my-8 flex justify-start ">
-                <h1 class="text-2xl font-bold  xs:text-3xl"> Detail Komputer</h1>       
+            <div class="mb-2 mt-10 flex justify-start">
+                <h1 class="lg:text-3xl font-bold  xs:text-xl"> Detail Komputer</h1>       
             </div>
 
             <div class="grid grid-cols-2 xs:grid-cols-1 md:grid-cols-2  sm:grid-cols-1 bg-gray-300 rounded-md">
@@ -26,6 +26,12 @@
                         <div class=" bg-slate-100 rounded-md p-5">
                             <label for="" class="font-bold ">Keterangan</label>
                             <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $detailKomputer->keterangan }}</div>
+
+                            <label for="" class="font-bold ">IP Komputer</label>
+                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $detailKomputer->ip_address }}</div>
+
+                            <label for="" class="font-bold ">Sistem Operasi</label>
+                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $detailKomputer->sistem_operasi }}</div>
 
                             <label for="" class="font-bold ">Ruangan Komputer</label>
                             <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $detailKomputer->ruangan }}</div>

@@ -18,7 +18,7 @@
                 </div> --}}
 
                 <div class="m-5">
-                    <h3 class="text-white text-1xl font-boldonse italic"> MKU - MKS</h3>
+                    <h3 class="text-red-400 text-1xl font-boldonse italic"> MKU <span class="text-white"> - </span><span class="text-blue-400">MKS</span> </h3>
                 </div>
             </div>
 
