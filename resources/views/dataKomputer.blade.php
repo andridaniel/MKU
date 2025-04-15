@@ -1,18 +1,18 @@
 <x-app-layout>
-    <div class="m-5 rounded-md ">
+    <div class="m-5 rounded-md text-white ">
 
         <div class="flex mb-5 justify-end xs:flex xs:flex-col lg:flex-row ">
 
             <div class="mx-2 xs:my-5 ">
                 <a href="{{ route('createBarang')}}"
-                class="bg-yellow-500 pe-8 p-3 w-full shadow-lg rounded-md hover:bg-orange-500 text-white">
+                class="bg-yellow-500 pe-5 p-3 w-full shadow-lg rounded-md hover:bg-orange-500 text-white xs:text-xs md:text-sm lg:text-sm">
                 <i class="fa-solid fa-database"></i>
                 Data Barang Komputer</a>
             </div>
 
             <div class="mx-2  xs:my-5">
                 <a href="{{ route('createData') }}"
-                class="bg-blue-500 w-full p-3 shadow-lg rounded-md hover:bg-orange-500 text-white">
+                class="bg-blue-500 w-full p-3 shadow-lg rounded-md hover:bg-orange-500 text-white xs:text-xs md:text-sm lg:text-sm">
                 <i class="fa-solid fa-folder-plus"></i>
                 Tambah Data Komputer</a>
             </div>
@@ -23,41 +23,47 @@
             <p class="text-gray-600 mt-56 text-center">--Tidak Ada Data Komputer Yang Tersedia--</p>
         @endif
 
-        <div class="grid rounded-md grid-cols-4 gap-4 mt-5 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-gray-600  shadow-2xl">
+        <table class=" border border-gray-300 w-full">
+            <thead class="border-orange-400 ">
+                <th class="border border-orange-400 lg:text-sm xs:text-xs">No</th> 
+                <th class="border border-orange-400 lg:text-sm xs:text-xs">Nama Komputer</th>
+                <th class="border border-orange-400 lg:text-sm xs:text-xs">IP Komputer</th>
+                <th class="border border-orange-400 lg:text-sm xs:text-xs">Ruangan Komputer</th>
+                <th class="border border-orange-400 lg:text-sm xs:text-xs">Aksi</th>
+
+            </thead>
+            
+
             @foreach ($dataKomputerPagination as $item => $value)
-                <div class="rounded-md bg-gray-400  shadow-lg m-2 ">
 
-                    <div class="rounded-t-md  h-[250px] bg-gray-400 overflow-hidden p-1">
-                        <img src="{{ $value->images }}" class="w-full h-full object-cover rounded-md"
-                            alt="gambar Komputer">
-                    </div>
+               <tbody>
+                    <td class="border border-orange-400 lg:text-sm xs:text-xs text-center">{{ $dataKomputerPagination->firstItem() + $item }} </td>
+                    <td class="border border-orange-400 lg:text-sm xs:text-xs">{{ $value->nama_komputer }} </td>
+                    <td class="border border-orange-400 lg:text-sm xs:text-xs">{{ $value->ip_address }} </td>
+                    <td class="border border-orange-400 lg:text-sm xs:text-xs">{{ $value->ruangan }} </td>
+                    <td class="border border-orange-400">
 
-                    <div class=" bg-slate-100 m-1 p-3 rounded-md ">
-                       <div class="mb-4">
-                           <div class=" border-b border-gray-900/10">Nama Komputer  : {{ $value->nama_komputer }}</div>
-                           <div class=" border-b border-gray-900/10">IP Address     : {{ $value->ip_address }}</div>
-                           <div class=" border-b border-gray-900/10">Sistem Operasi : {{ $value->sistem_operasi }}</div>
-                           <div class=" border-b border-gray-900/10">Ruangan      : {{ $value->ruangan }}</div>
-                       </div>
-
-                        <div class="p-1 py-4 flex text-center ">
+                        <div class="bg-gray-500 hover:bg-orange-500 text-white rounded-md flex justify-center items-center my-2 py-2 mx-2 lg:flex lg:flex-row xs:flex xs:flex-col xs:text-xs lg:text-sm">
                             <a href=" {{ route('detailKomputer', ['id' => $value->id]) }}"
-                                class="bg-blue-500 hover:bg-orange-500  p-2 rounded-md w-full text-white">
-                                Lihat Detail
-                                <i class="fa-solid fa-eye text-gray-200 ms-2"></i>
+                                class="xs:flex xs:flex-col md:flex md:flex-row lg:flex lg:flex-row">
+                                <div class="xs:hidden md:block lg:block">
+                                    Lihat Detail
+                                </div>
+                                <span class="">
+                                    <i class="fa-solid fa-eye mx-2"></i>
+                                </span>
                             </a>
                         </div>
-                    </div>
 
-
-
-
-                </div>
+                    </td>
+               </tbody>
+                
+                   
             @endforeach
 
             
 
-        </div>
+        </table>
          {{-- pagination --}}
              
          <div class="flex justify-end m-2">

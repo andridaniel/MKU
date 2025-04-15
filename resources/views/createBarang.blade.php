@@ -15,15 +15,15 @@
     <div class="m-2 rounded-md mt-5">
 
         {{-- create barang --}}
-        <div id="modal" class=" bg-gray-200 rounded-md  hidden">
+        <div id="modal" class=" bg-gray-700  rounded-md  hidden">
 
-            <div class="flex justify-between bg-gray-600 rounded-t-md">
+            <div class="flex justify-between bg-gray-700 rounded-t-md">
                 <div class="m-5 text-2xl ">
                     <h3 class=" text-white xs:text-xs sm:text-sm lg:text-xl ">TAMBAH DATA BARANG KOMPUTER</h3>
                 </div>
 
                 <div class="m-5">
-                    <button onclick="closeModal()" class="bg-gray-600 rounded-md hover:bg-gray-400 p-2 px-6 text-white shadow-xl">
+                    <button onclick="closeModal()" class="bg-gray-600 rounded-md hover:bg-gray-400 p-2 px-6 text-orange-500 shadow-xl">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
@@ -38,29 +38,29 @@
         
                             {{-- kode barang --}}
                             <div class="sm:col-span-3">
-                                <label for="kode_brg" class="block text-sm/6 font-medium text-gray-900">Kode
+                                <label for="kode_brg" class="block text-sm/6 font-medium text-white">Kode
                                     Barang</label>
                                 <div class="mt-2">
                                     <input type="text" name="kode_brg" id="kode_brg" placeholder="Masukan Kode Barang"
                                         autocomplete="given-name"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                 </div>
                             </div>
         
                             {{-- nama barang --}}
                             <div class="sm:col-span-3">
-                                <label for="nama_brg" class="block text-sm/6 font-medium text-gray-900">Nama
+                                <label for="nama_brg" class="block text-sm/6 font-medium text-white">Nama
                                     Barang</label>
                                 <div class="mt-2">
                                     <input type="text" name="nama_brg" id="nama_brg" placeholder="Masukan Nama Barang"
                                         autocomplete="given-name"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                 </div>
                             </div>
         
                             {{-- jenis barang --}}
                             <div class="sm:col-span-3">
-                                <label for="jns_brg" class="block text-sm/6 font-medium text-gray-900">Jenis Barang</label>
+                                <label for="jns_brg" class="block text-sm/6 font-medium text-white">Jenis Barang</label>
                                 <div class="mt-2">
                                     <select name="jns_brg" id="jns_brg"
                                         class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
@@ -106,12 +106,12 @@
         </div>
 
 
-        <div class="mx-2 bg-gray-200">
+        <div class="mx-2 bg-gray-700">
 
             <div class="flex justify-between pt-5 ">
 
                 <div class="lg:ms-2">
-                    <h3 class="lg:text-2xl md:text-xl xs:text-md xs:p-2 lg:p-0 text-start font-semibold">Data Barang Komputer</h3>
+                    <h3 class="lg:text-2xl md:text-xl xs:text-md xs:p-2 lg:p-0 text-start text-white font-semibold">Data Barang Komputer</h3>
                 </div>
         
                 <div class="mb-5 lg:me-2 flex justify-end lg:px-0 md:px-0 xs:px-2">
@@ -130,19 +130,19 @@
             <table class="border border-gray-950 w-full ">
                 
             
-                <th class="border border-gray-950">No</th>
-                <th class="border border-gray-950">Kode Barang</th>
-                <th class="border border-gray-950">Nama Barang</th>
-                <th class="border border-gray-950">Jenis Barang</th>
-                <th class="border border-gray-950">Aksi</th>
+                <th class="border border-orange-400 lg:text-sm xs:text-xs text-white">No</th>
+                <th class="border border-orange-400 lg:text-sm xs:text-xs text-white">Kode Barang</th>
+                <th class="border border-orange-400 lg:text-sm xs:text-xs text-white">Nama Barang</th>
+                <th class="border border-orange-400 lg:text-sm xs:text-xs text-white">Jenis Barang</th>
+                <th class="border border-orange-400 lg:text-sm xs:text-xs text-white">Aksi</th>
     
                 @foreach ($dataPagination as $item =>$data)
                 <tbody>
-                    <td class="border border-gray-950 text-center">{{$item+1}}</td>
-                    <td class="border border-gray-950 text-center">{{$data->kode_brg}}</td>
-                    <td class="border border-gray-950">{{$data->nama_brg}}</td>
-                    <td class="border border-gray-950">{{$data->jns_brg}}</td>
-                    <td class="border border-gray-950">
+                    <td class="border border-orange-400 lg:text-sm xs:text-xs text-white text-center">{{$dataPagination->firstItem() + $item}}</td>
+                    <td class="border border-orange-400 lg:text-sm xs:text-xs text-white text-center">{{$data->kode_brg}}</td>
+                    <td class="border border-orange-400 lg:text-sm xs:text-xs text-white">{{$data->nama_brg}}</td>
+                    <td class="border border-orange-400 lg:text-sm xs:text-xs text-white">{{$data->jns_brg}}</td>
+                    <td class="border border-orange-400 lg:text-sm xs:text-xs text-white">
 
                         <div class="flex justify-center xs:flex xs:flex-col lg:flex lg:flex-row">
 
@@ -150,7 +150,7 @@
                                 <form action="{{ route('editBarang', $data->id) }}" method="post">
                                     @csrf
                                     @method('get')
-                                    <button class="bg-blue-500 hover:bg-blue-600  p-2 px-4 rounded-md w-full text-white">Edit</button>
+                                    <button class="bg-gray-500 hover:bg-gray-600  p-2 px-4 rounded-md w-full text-white">Edit</button>
                                 </form>
                             
                             </div>
@@ -159,7 +159,7 @@
                                 <form action="{{ route('deleteBarang', $data->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button id="deleteButton" class="bg-red-500 hover:bg-red-700  p-2 rounded-md w-full text-white">Hapus</button>
+                                    <button id="deleteButton" class="bg-orange-500 hover:bg-orange-600  p-2 rounded-md w-full text-white">Hapus</button>
                                     <script>
                                         document.getElementById('deleteButton').addEventListener('click', function(event) {
                                             if (!confirm('Apakah Anda yakin ingin menghapus data ini?')) {

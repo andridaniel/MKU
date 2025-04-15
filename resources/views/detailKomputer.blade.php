@@ -12,7 +12,7 @@
             
 
             <div class="mb-2 mt-10 flex justify-start">
-                <h1 class="lg:text-3xl font-bold  xs:text-xl"> Detail Komputer</h1>       
+                <h1 class="lg:text-3xl font-bold text-white  xs:text-xl"> Detail Komputer</h1>       
             </div>
 
             <div class="grid grid-cols-2 xs:grid-cols-1 md:grid-cols-2  sm:grid-cols-1 bg-gray-300 rounded-md">

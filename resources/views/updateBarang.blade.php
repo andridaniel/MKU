@@ -13,8 +13,8 @@
        
         
            
-        <div class="m-5 bg-gray-200 rounded-md xs:mx-2 md:mx-10 lg:mx-20">
-            <div class="flex justify-start bg-gray-600 rounded-t-md mt-5">
+        <div class="m-5  rounded-md xs:mx-2 md:mx-10 lg:mx-20">
+            <div class="flex justify-start  mt-5">
                 <div class="m-2 text-2xl ">
                     <h3 class="py-2 text-white xs:text-xs sm:text-sm lg:text-xl ">UPDATE DATA BARANG KOMPUTER</h3>
                 </div>
@@ -25,40 +25,40 @@
     
                 
                 <div class="space-y-12">
-                    <div class="border-b border-gray-900/10 pb-12 m-2">
+                    <div class="border-b border-orange-500 pb-12 m-2">
     
                         {{-- kode barang --}}
                         <div class="sm:col-span-3">
-                            <label for="kode_brg" class="block text-sm/6 font-medium text-gray-900">Kode
+                            <label for="kode_brg" class="block text-sm/6 font-medium text-white">Kode
                                 Barang</label>
                             <div class="mt-2">
                                 <input type="text" name="kode_brg" id="kode_brg"
                                     autocomplete="given-name"
                                     value="{{ $dataBarang->kode_brg }}"
-                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-600 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                             </div>
                         </div>
     
     
                         {{-- nama barang --}}
                         <div class="sm:col-span-3">
-                            <label for="nama_brg" class="block text-sm/6 font-medium text-gray-900">Nama
+                            <label for="nama_brg" class="block text-sm/6 font-medium text-white">Nama
                                 Barang</label>
                             <div class="mt-2">
                                 <input type="text" name="nama_brg" id="nama_brg"
                                     autocomplete="given-name"
                                     value="{{ $dataBarang->nama_brg }}"
-                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-600 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                             </div>
                         </div>
     
     
                         {{-- jenis barang --}}
                         <div class="sm:col-span-3">
-                            <label for="jns_brg" class="block text-sm/6 font-medium text-gray-900">Jenis Barang</label>
+                            <label for="jns_brg" class="block text-sm/6 font-medium text-white">Jenis Barang</label>
                             <div class="mt-2">
                                 <select name="jns_brg" id="jns_brg"
-                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-600 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                     <option value="Monitor" {{ $dataBarang->jns_brg == 'Monitor' ? 'selected' : '' }}>Monitor</option>
                                     <option value="Keyboard" {{ $dataBarang->jns_brg == 'Keyboard' ? 'selected' : '' }}>Keyboard</option>
                                     <option value="Ram" {{ $dataBarang->jns_brg == 'Ram' ? 'selected' : '' }}>Ram</option>
