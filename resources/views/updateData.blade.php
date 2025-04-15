@@ -267,4 +267,62 @@
             </div>
         </form>
     </div>
+
+
+    
+    <h3>Riwayat Perubahan</h3>
+
+    @if($data->histories->count() > 0)
+        <table class="table-auto w-full border">
+            <thead>
+                <tr>
+                    <th class="border px-4 py-2">Waktu Simpan</th>
+                    <th class="border px-4 py-2">Nama Komputer</th>
+                    <th class="border px-4 py-2">IP Address</th>
+                    <th class="border px-4 py-2">OS</th>
+                    <th class="border px-4 py-2">Ruangan</th>
+                    <th class="border px-4 py-2">Monitor</th>
+                    <th class="border px-4 py-2">Keyboard</th>
+                    <th class="border px-4 py-2"> Ram</th>
+                    <th class="border px-4 py-2">Prosesor</th>
+                    <th class="border px-4 py-2">SSD/HDD</th>
+                    <th class="border px-4 py-2">Motherboard</th>
+                    <th class="border px-4 py-2">Lan Card</th>
+                    <th class="border px-4 py-2">Keterangan</th>
+                    <th class="border px-4 py-2">Images</th>
+                    {{-- Tambahkan kolom lain jika perlu --}}
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($data->histories as $history)
+                    <tr>
+                        <td class="border px-4 py-2">{{ $history->created_at->format('d-m-Y H:i') }}</td>
+                        <td class="border px-4 py-2">{{ $history->nama_komputer }}</td>
+                        <td class="border px-4 py-2">{{ $history->ip_address }}</td>
+                        <td class="border px-4 py-2">{{ $history->sistem_operasi }}</td>
+                        <td class="border px-4 py-2">{{ $history->ruangan }}</td>
+                        <td class="border px-4 py-2">{{ $history->monitor->nama_brg ?? '-' }}</td>
+                        <td class="border px-4 py-2">{{ $history->keyboard->nama_brg ?? '-' }}</td>
+                        <td class="border px-4 py-2">{{ $history->ram->nama_brg ?? '-' }}</td>
+                        <td class="border px-4 py-2">{{ $history->prosesor->nama_brg ?? '-' }}</td>
+                        <td class="border px-4 py-2">{{ $history->ssd_hdd->nama_brg ?? '-' }}</td>
+                        <td class="border px-4 py-2">{{ $history->motherboard->nama_brg ?? '-' }}</td>
+                        <td class="border px-4 py-2">{{ $history->lan_card->nama_brg ?? '-' }}</td>
+                        <td class="border px-4 py-2">{{ $history->keterangan }}</td>
+                        <td class="border px-4 py-2">
+                            @if($history->images)
+                                <img src="{{ asset($history->images) }}" alt="Image" class="w-16 h-16">
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <p class="text-gray-500">Belum ada riwayat perubahan.</p>
+    @endif
+    
+    </div>
+    
+
 </x-app-layout>

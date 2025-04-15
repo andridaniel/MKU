@@ -3,14 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Komputer extends Model
-
-
+class DataKomputerHistory extends Model
 {
-    protected $table = 'data_komputer';
     protected $fillable = [
+        'data_komputer_id',
         'nama_komputer',
         'ip_address',
         'sistem_operasi',
@@ -26,20 +23,10 @@ class Komputer extends Model
         'images',
     ];
 
-    protected $guarded = ['id', 'created_at', 'updated_at'];
-
-    public function barang()
+    public function dataKomputer()
     {
-        return $this->belongsTo(Barang::class, 'id_monitor');
+        return $this->belongsTo(Komputer::class);
     }
-
-    public function histories()
-    {
-        return $this->hasMany(DataKomputerHistory::class, 'data_komputer_id');
-    }
-
-
-    // Di app/Models/Komputer.php
 
     public function monitor()
     {
@@ -71,10 +58,11 @@ class Komputer extends Model
         return $this->belongsTo(Barang::class, 'id_motherboard');
     }
 
-    public function lan_Card()
+    public function lan_card()
     {
         return $this->belongsTo(Barang::class, 'id_lan_card');
     }
 
 
+    
 }

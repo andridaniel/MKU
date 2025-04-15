@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Komputer;
 use App\Models\Barang;
+use App\Models\DataKomputerHistory;
 
 
 class MasterController extends Controller
@@ -116,8 +117,28 @@ class MasterController extends Controller
         $motherboard = Barang::where('jns_brg', 'Motherboard')->get();
         $lan_card = Barang::where('jns_brg', 'Lan Card')->get();
 
+        $data = Komputer::with([
+            'histories.monitor',
+            'histories.keyboard',
+            'histories.ram',
+            'histories.prosesor',
+            'histories.ssd_hdd',
+            'histories.motherboard',
+            'histories.lan_card',
+            'monitor',
+            'keyboard',
+            'ram',
+            'prosesor',
+            'ssd_hdd',
+            'motherboard',
+            'lan_Card'
+        ])->findOrFail($id);
+        
+        
+        
 
-        return view('updateData', compact('updateKomputer', 'monitor', 'keyboard', 'ram', 'prosesor', 'ssd_hdd', 'motherboard', 'lan_card'));
+
+        return view('updateData', compact('updateKomputer', 'monitor', 'keyboard', 'ram', 'prosesor', 'ssd_hdd', 'motherboard', 'lan_card', 'data'));
     }
 
     public function editData(Request $request, $id)
@@ -142,6 +163,26 @@ class MasterController extends Controller
         
         // Ambil data lama dari database
         $komputer = Komputer::findOrFail($id);
+
+
+        DataKomputerHistory::create([
+            'data_komputer_id' => $komputer->id,
+            'nama_komputer'    => $komputer->nama_komputer,
+            'ip_address'       => $komputer->ip_address,
+            'sistem_operasi'   => $komputer->sistem_operasi,
+            'ruangan'          => $komputer->ruangan,
+            'id_monitor'       => $komputer->id_monitor,
+            'id_keyboard'      => $komputer->id_keyboard,
+            'id_ram'           => $komputer->id_ram,
+            'id_prosesor'      => $komputer->id_prosesor,
+            'id_ssd_hdd'       => $komputer->id_ssd_hdd,
+            'id_motherboard'   => $komputer->id_motherboard,
+            'id_lan_card'      => $komputer->id_lan_card,
+            'keterangan'       => $komputer->keterangan,
+            'images'           => $komputer->images,
+            'created_at'       => now(),
+        ]);
+        
     
 
         // Simpan gambar jika ada, jika tidak gunakan gambar lama
