@@ -1,9 +1,9 @@
 <x-app-layout>
-    <div class="m-5 bg-gray-200 rounded-md">
+    <div class="mx-5 bg-gray-200 rounded-md">
         <form action="{{ route('storeData') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="space-y-12">
-                <div class="border-b border-gray-900/10 pb-12">
+            <div class="space-y-12 ">
+                <div class="border-b border-gray-900/10 py-2">
 
                     <div class="p-5 pt-12 flex justify-start xs:pt-5 lg:pt-12 sm:pt-8  ">
                         <a href="{{ route('dataKomputer') }}"
@@ -21,7 +21,7 @@
 
                     <div class="mt-1 grid gap-y-8 sm:grid-cols-1 p-5">
                         <div class="sm:col-span-4">
-                            <div class="">
+                            <div >
 
                                 {{-- Nama Komputer --}}
                                 <div class="sm:col-span-3">

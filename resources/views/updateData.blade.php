@@ -1,11 +1,11 @@
 <x-app-layout>
-    <div class="m-5 bg-gray-200 rounded-md">
+    <div class="rounded-md">
         <form action="{{ route('editData', ['id' => $updateKomputer->id]) }}" enctype="multipart/form-data"
             method="POST">
             @csrf
             @method('PUT')
             <div class="space-y-12">
-                <div class="border-b border-gray-900/10 pb-12">
+                <div class="border-b border-gray-900/10 pb-12 bg-gray-400 mx-5 rounded-md">
 
                     <div class="p-5 pt-12 flex justify-start">
                         <a href="{{ route('detailKomputer', ['id' => $updateKomputer->id]) }}"
@@ -273,60 +273,38 @@
     
 
    
-    <div class="m-5 w-full xs:overflow-auto">
+    <div class="mx-5 mt-5">
 
-        <div class="text-white text-2xl">
-            <h3>Riwayat Perubahan</h3>
-        </div>
+        
 
-        @if($data->histories->count() > 0)
-        <table class="table-auto xs:min-w-[1020px] xs:overflow-auto border text-white text-xs">
-            <thead>
-                <tr>
-                    <th class="border">Waktu Perubahan</th>
-                    <th class="border">Nama Komputer</th>
-                    <th class="border">IP Address</th>
-                    <th class="border">OS</th>
-                    <th class="border">Ruangan</th>
-                    <th class="border">Monitor</th>
-                    <th class="border">Keyboard</th>
-                    <th class="border"> Ram</th>
-                    <th class="border">Prosesor</th>
-                    <th class="border">SSD/HDD</th>
-                    <th class="border">Motherboard</th>
-                    <th class="border">Lan Card</th>
-                    <th class="border">Keterangan</th>
-                    <th class="border">Images</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($data->histories as $history)
+     
+        @if(count($riwayatPerubahan) > 0)
+            <h2 class="text-lg font-bold text-orange-500 mt-6 mb-2">Riwayat Perubahan Data:</h2>
+            <table class="table-auto w-full border border-orange-500">
+                <thead>
                     <tr>
-                        <td class="border ">{{ $history->created_at->format('d-m-Y H:i') }}</td>
-                        <td class="border ">{{ $history->nama_komputer }}</td>
-                        <td class="border ">{{ $history->ip_address }}</td>
-                        <td class="border ">{{ $history->sistem_operasi }}</td>
-                        <td class="border ">{{ $history->ruangan }}</td>
-                        <td class="border ">{{ $history->monitor->nama_brg ?? '-' }}</td>
-                        <td class="border ">{{ $history->keyboard->nama_brg ?? '-' }}</td>
-                        <td class="border ">{{ $history->ram->nama_brg ?? '-' }}</td>
-                        <td class="border ">{{ $history->prosesor->nama_brg ?? '-' }}</td>
-                        <td class="border ">{{ $history->ssd_hdd->nama_brg ?? '-' }}</td>
-                        <td class="border ">{{ $history->motherboard->nama_brg ?? '-' }}</td>
-                        <td class="border ">{{ $history->lan_card->nama_brg ?? '-' }}</td>
-                        <td class="border ">{{ $history->keterangan }}</td>
-                        <td class="border ">
-                            @if($history->images)
-                                <img src="{{ asset($history->images) }}" alt="Image" class="w-10 h-10">
-                            @endif
-                        </td>
+                        <th class="px-4 py-2 text-orange-500">Field</th>
+                        <th class="px-4 py-2 text-orange-500">Data Lama</th>
+                        <th class="px-4 py-2 text-orange-500">Data Baru</th>
+                        <th class="px-4 py-2 text-orange-500">Waktu Perubahan</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach($riwayatPerubahan as $log)
+                        <tr>
+                            <td class="border px-4 py-2 text-white">{{ ucwords(str_replace('_', ' ', $log['field'])) }}</td>
+                            <td class="border px-4 py-2 text-white">{{ $log['lama'] ?? '-' }}</td>
+                            <td class="border px-4 py-2 text-white">{{ $log['baru'] ?? '-' }}</td>
+                            <td class="border px-4 py-2 text-white">{{ $log['waktu'] ?? '-' }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         @else
-            <p class="text-gray-500">Belum ada riwayat perubahan.</p>
+            <p class="text-white mt-4">Belum ada riwayat perubahan.</p>
         @endif
+
+        
     
     </div>
     

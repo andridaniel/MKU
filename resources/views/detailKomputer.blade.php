@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="m-5">
-        <div class="">
+    <div>
+        <div class="mx-5 p-5">
 
             <div class="flex mb-5">
                 <a href=" {{ route('dataKomputer') }} "
@@ -19,10 +19,8 @@
                 <div class="p-5 rounded-md">
                     <img src="{{ url($detailKomputer->images) }}" width="500" class="rounded-md" alt="gambar komputer">
                 </div>
-                <div class="m-5">
+                <div class="m-5 ">
                     <div class="mx-auto">
-
-
                         <div class=" bg-slate-100 rounded-md p-5">
                             <label for="" class="font-bold ">Keterangan</label>
                             <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $detailKomputer->keterangan }}</div>

@@ -117,28 +117,71 @@ class MasterController extends Controller
         $motherboard = Barang::where('jns_brg', 'Motherboard')->get();
         $lan_card = Barang::where('jns_brg', 'Lan Card')->get();
 
-        $data = Komputer::with([
-            'histories.monitor',
-            'histories.keyboard',
-            'histories.ram',
-            'histories.prosesor',
-            'histories.ssd_hdd',
-            'histories.motherboard',
-            'histories.lan_card',
+
+
+      
+
+        $semuaHistori = DataKomputerHistory::with([
             'monitor',
             'keyboard',
             'ram',
             'prosesor',
             'ssd_hdd',
             'motherboard',
-            'lan_Card'
-        ])->findOrFail($id);
+            'lan_card'
+        ])->where('data_komputer_id', $id)
+          ->orderBy('created_at')
+          ->get();
         
+        $riwayatPerubahan = [];
+        
+        foreach ($semuaHistori as $i => $history) {
+            if ($i === 0) continue; // skip versi pertama (tidak ada pembanding sebelumnya)
+            
+            $prev = $semuaHistori[$i - 1];
+            $curr = $history;
+        
+            $fields = [
+                'nama_komputer', 'ip_address', 'sistem_operasi', 'ruangan',
+                'id_monitor', 'id_keyboard', 'id_ram', 'id_prosesor',
+                'id_ssd_hdd', 'id_motherboard', 'id_lan_card',
+                'keterangan', 'images'
+            ];
+        
+            $relasiBarang = [
+                'id_monitor'     => 'monitor',
+                'id_keyboard'    => 'keyboard',
+                'id_ram'         => 'ram',
+                'id_prosesor'    => 'prosesor',
+                'id_ssd_hdd'     => 'ssd_hdd',
+                'id_motherboard' => 'motherboard',
+                'id_lan_card'    => 'lan_card',
+            ];
+        
+            foreach ($fields as $field) {
+                $prevValue = $prev->$field ?? null;
+                $currValue = $curr->$field ?? null;
+        
+                if (array_key_exists($field, $relasiBarang)) {
+                    $relasi = $relasiBarang[$field];
+                    $prevValue = optional($prev->$relasi)->nama_brg;
+                    $currValue = optional($curr->$relasi)->nama_brg;
+                }
+        
+                if ($prevValue != $currValue) {
+                    $riwayatPerubahan[] = [
+                        'field' => $field,
+                        'lama' => $prevValue,
+                        'baru' => $currValue,
+                        'waktu' => $curr->created_at->format('d M Y H:i'),
+                    ];
+                }
+            }
+        }
         
         
 
-
-        return view('updateData', compact('updateKomputer', 'monitor', 'keyboard', 'ram', 'prosesor', 'ssd_hdd', 'motherboard', 'lan_card', 'data'));
+        return view('updateData', compact('updateKomputer', 'monitor', 'keyboard', 'ram', 'prosesor', 'ssd_hdd', 'motherboard', 'lan_card',   'riwayatPerubahan' ));   
     }
 
     public function editData(Request $request, $id)
@@ -165,7 +208,7 @@ class MasterController extends Controller
         $komputer = Komputer::findOrFail($id);
 
 
-        DataKomputerHistory::create([
+         DataKomputerHistory::create([
             'data_komputer_id' => $komputer->id,
             'nama_komputer'    => $komputer->nama_komputer,
             'ip_address'       => $komputer->ip_address,
@@ -195,12 +238,10 @@ class MasterController extends Controller
             $validatedData['images'] = $komputer->images; // Gunakan gambar lama
         }
 
-   
-
-        
-
         // Update data di database berdasarkan ID
         $komputer->update($validatedData);
+
+      
 
         return redirect()->route('updateData', ['id' => $id])->with('success', 'Data komputer berhasil diupdate.');
     }

@@ -191,7 +191,7 @@
        
          {{-- pagination --}}
              
-                <div class="flex justify-end m-2">
+                <div class="flex justify-end p-2">
                     {{ $dataPagination->links() }}
                 </div>
 

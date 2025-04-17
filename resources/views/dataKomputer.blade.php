@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="m-5 rounded-md text-white ">
+    <div class="rounded-md text-white ">
 
         <div class="flex mb-5 justify-end xs:flex xs:flex-col lg:flex-row ">
 
