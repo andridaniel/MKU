@@ -128,7 +128,8 @@ class MasterController extends Controller
             'prosesor',
             'ssd_hdd',
             'motherboard',
-            'lan_card'
+            'lan_card',
+            'user'
         ])->where('data_komputer_id', $id)
           ->orderBy('created_at')
           ->get();
@@ -136,7 +137,7 @@ class MasterController extends Controller
         $riwayatPerubahan = [];
         
         foreach ($semuaHistori as $i => $history) {
-            if ($i === 0) continue; // skip versi pertama (tidak ada pembanding sebelumnya)
+            if ($i === 0) continue;
             
             $prev = $semuaHistori[$i - 1];
             $curr = $history;
@@ -174,11 +175,11 @@ class MasterController extends Controller
                         'lama' => $prevValue,
                         'baru' => $currValue,
                         'waktu' => $curr->created_at->format('d M Y H:i'),
+                        'user' => $curr->user,
                     ];
                 }
             }
         }
-        
         
 
         return view('updateData', compact('updateKomputer', 'monitor', 'keyboard', 'ram', 'prosesor', 'ssd_hdd', 'motherboard', 'lan_card',   'riwayatPerubahan' ));   
@@ -192,42 +193,19 @@ class MasterController extends Controller
             'ip_address'     => 'required|string|max:255',
             'sistem_operasi' => 'required|string|max:255',
             'ruangan'        => 'required|string|max:255',
-            'id_monitor'        => 'required|string|max:255',
-            'id_keyboard'       => 'required|string|max:255',
-            'id_ram'            => 'required|string|max:255',
-            'id_prosesor'       => 'required|string|max:255',
-            'id_ssd_hdd'        => 'required|string|max:255',
-            'id_motherboard'    => 'required|string|max:255',
-            'id_lan_card'       => 'required|string|max:255',
+            'id_monitor'     => 'required|string|max:255',
+            'id_keyboard'    => 'required|string|max:255',
+            'id_ram'         => 'required|string|max:255',
+            'id_prosesor'    => 'required|string|max:255',
+            'id_ssd_hdd'     => 'required|string|max:255',
+            'id_motherboard' => 'required|string|max:255',
+            'id_lan_card'    => 'required|string|max:255',
             'keterangan'     => 'nullable|string',
             'images'         => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
- 
-        
-        // Ambil data lama dari database
-        $komputer = Komputer::findOrFail($id);
-
-
-         DataKomputerHistory::create([
-            'data_komputer_id' => $komputer->id,
-            'nama_komputer'    => $komputer->nama_komputer,
-            'ip_address'       => $komputer->ip_address,
-            'sistem_operasi'   => $komputer->sistem_operasi,
-            'ruangan'          => $komputer->ruangan,
-            'id_monitor'       => $komputer->id_monitor,
-            'id_keyboard'      => $komputer->id_keyboard,
-            'id_ram'           => $komputer->id_ram,
-            'id_prosesor'      => $komputer->id_prosesor,
-            'id_ssd_hdd'       => $komputer->id_ssd_hdd,
-            'id_motherboard'   => $komputer->id_motherboard,
-            'id_lan_card'      => $komputer->id_lan_card,
-            'keterangan'       => $komputer->keterangan,
-            'images'           => $komputer->images,
-            'created_at'       => now(),
-        ]);
-        
     
-
+        $komputer = Komputer::findOrFail($id);
+    
         // Simpan gambar jika ada, jika tidak gunakan gambar lama
         if ($request->hasFile('images')) {
             $image = $request->file('images');
@@ -235,17 +213,46 @@ class MasterController extends Controller
             $image->move(public_path('images'), $imageName);
             $validatedData['images'] = 'images/' . $imageName;
         } else {
-            $validatedData['images'] = $komputer->images; // Gunakan gambar lama
+            $validatedData['images'] = $komputer->images;
         }
-
-        // Update data di database berdasarkan ID
+    
+        // Cek perbedaan data untuk log perubahan
+        $fieldsToCheck = [
+            'nama_komputer', 'ip_address', 'sistem_operasi', 'ruangan',
+            'id_monitor', 'id_keyboard', 'id_ram', 'id_prosesor',
+            'id_ssd_hdd', 'id_motherboard', 'id_lan_card',
+            'keterangan', 'images'
+        ];
+    
+        $changes = [];
+    
+        foreach ($fieldsToCheck as $field) {
+            if ($komputer->$field != $validatedData[$field]) {
+                $changes[$field] = [
+                    'lama' => $komputer->$field,
+                    'baru' => $validatedData[$field],
+                ];
+            }
+        }
+    
+        // Update data ke database
         $komputer->update($validatedData);
-
-      
-
+    
+        // Simpan satu snapshot baru ke histori kalau ada perubahan
+        if (!empty($changes)) {
+            DataKomputerHistory::create(array_merge(
+                ['data_komputer_id' => $komputer->id],
+                $validatedData,
+                [
+                    'user_id' => auth()->id(),
+                    'created_at' => now()
+                ]
+            ));
+        }
+    
         return redirect()->route('updateData', ['id' => $id])->with('success', 'Data komputer berhasil diupdate.');
     }
-
+    
 
 
 }

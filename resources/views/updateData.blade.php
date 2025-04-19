@@ -279,29 +279,38 @@
 
      
         @if(count($riwayatPerubahan) > 0)
-            <h2 class="text-lg font-bold text-orange-500 mt-6 mb-2">Riwayat Perubahan Data:</h2>
+            <div class="m-5">
+                <p class="text-orange-500 font-semibold italic "> -- Riwayat Perubahan Data -- </p>
+            </div>
             <table class="table-auto w-full border border-orange-500">
                 <thead>
                     <tr>
                         <th class="px-4 py-2 text-orange-500">Field</th>
+                        <th class="px-4 py-2 text-orange-500">Nama User</th>
                         <th class="px-4 py-2 text-orange-500">Data Lama</th>
                         <th class="px-4 py-2 text-orange-500">Data Baru</th>
                         <th class="px-4 py-2 text-orange-500">Waktu Perubahan</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($riwayatPerubahan as $log)
-                        <tr>
-                            <td class="border px-4 py-2 text-white">{{ ucwords(str_replace('_', ' ', $log['field'])) }}</td>
-                            <td class="border px-4 py-2 text-white">{{ $log['lama'] ?? '-' }}</td>
-                            <td class="border px-4 py-2 text-white">{{ $log['baru'] ?? '-' }}</td>
-                            <td class="border px-4 py-2 text-white">{{ $log['waktu'] ?? '-' }}</td>
-                        </tr>
-                    @endforeach
+                        @foreach($riwayatPerubahan as $log)
+                            <tr>
+                                <td class="border px-4 py-2 text-white">{{ ucwords(str_replace('_', ' ', $log['field'])) }}</td>
+                                <td class="border px-4 py-2 text-white">
+                                    {{ $log['user']->name ?? 'User tidak diketahui' }}
+                                </td>                            
+                                <td class="border px-4 py-2 text-white">{{ $log['lama'] ?? '-' }}</td>
+                                <td class="border px-4 py-2 text-white">{{ $log['baru'] ?? '-' }}</td>
+                                <td class="border px-4 py-2 text-white">{{ $log['waktu'] ?? '-' }}</td>
+                            </tr>
+                        @endforeach
                 </tbody>
             </table>
         @else
-            <p class="text-white mt-4">Belum ada riwayat perubahan.</p>
+        <div class="text-center">
+            <p class="text-orange-400 font-semibold italic "> -- Belum ada riwayat perubahan -- </p>
+        </div>
+            
         @endif
 
         

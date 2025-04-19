@@ -8,6 +8,7 @@ class DataKomputerHistory extends Model
 {
     protected $fillable = [
         'data_komputer_id',
+        'user_id',
         'nama_komputer',
         'ip_address',
         'sistem_operasi',
@@ -27,6 +28,12 @@ class DataKomputerHistory extends Model
     {
         return $this->belongsTo(Komputer::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 
     public function monitor()
     {
