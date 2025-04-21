@@ -15,4 +15,11 @@ class Barang extends Model
     ];
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    // Barang.php
+    public function histories()
+    {
+        return $this->hasMany(BarangHistory::class);
+    }
+
 }

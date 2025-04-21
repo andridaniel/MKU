@@ -1,6 +1,6 @@
 <x-app-layout>
     <div>
-        <div class="mx-5 p-5">
+        <div class="lg:mx-5 md:mx-2 xs:mx-1 p-5">
 
             <div class="flex mb-5">
                 <a href=" {{ route('dataKomputer') }} "
@@ -15,11 +15,11 @@
                 <h1 class="lg:text-3xl font-bold text-white  xs:text-xl"> Detail Komputer</h1>       
             </div>
 
-            <div class="grid grid-cols-2 xs:grid-cols-1 md:grid-cols-2  sm:grid-cols-1 bg-gray-300 rounded-md">
+            <div class="grid grid-cols-2 xs:grid-cols-1 md:grid-cols-2 sm:grid-cols-1 bg-gray-300 rounded-md">
                 <div class="p-5 rounded-md">
                     <img src="{{ url($detailKomputer->images) }}" width="500" class="rounded-md" alt="gambar komputer">
                 </div>
-                <div class="m-5 ">
+                <div class="m-5">
                     <div class="mx-auto">
                         <div class=" bg-slate-100 rounded-md p-5">
                             <label for="" class="font-bold ">Keterangan</label>
@@ -56,8 +56,8 @@
                             <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $lan_card->nama_brg ?? 'Tidak tersedia' }}</div>
 
                         </div>
-
                     </div>
+
                     <div class="flex gap-4 mt-5 bg-slate-100 p-4 rounded-md shadow-md">
                         <!-- Tombol Update -->
                         <form action="{{ route('updateData', ['id' => $detailKomputer->id]) }}" method="POST"

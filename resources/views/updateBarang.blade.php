@@ -2,18 +2,14 @@
     
     <div class="content-center">
 
-        <div class=" xs:mx-2 md:mx-10 lg:mx-20 mt-5 flex justify-start ">
+        <div class=" xs:mx-2 md:mx-10 lg:mx-5 mt-5 flex justify-start ">
             <a href="{{ route('createBarang') }}"
                 class="bg-gray-600 rounded-md hover:bg-gray-500 p-2 px-6 text-white shadow-xl">
                 <i class="fa-solid fa-backward pe-2"></i>
                 Kembali </a>
         </div>
-    
-    
-       
-        
-           
-        <div class="m-5  rounded-md xs:mx-2 md:mx-10 lg:mx-20">
+             
+        <div class="m-5  rounded-md xs:mx-2 md:mx-10 lg:mx-5">
             <div class="flex justify-start  mt-5">
                 <div class="m-2 text-2xl ">
                     <h3 class="py-2 text-white xs:text-xs sm:text-sm lg:text-xl ">UPDATE DATA BARANG KOMPUTER</h3>
@@ -101,6 +97,42 @@
     
             </form>
         </div>
+
+        {{-- riwayat --}}
+        <div class="mx-5 text-white">
+
+            <h2 class="text-lg font-semibold mt-6 mb-2">Riwayat Perubahan</h2>
+            <table class="table-auto w-full border text-sm">
+                <thead class="">
+                    <tr>
+                        <th class="border px-4 py-2">Field</th>
+                        <th class="border px-4 py-2">Data Lama</th>
+                        <th class="border px-4 py-2">Data Baru</th>
+                        <th class="border px-4 py-2">User</th>
+                        <th class="border px-4 py-2">Waktu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($riwayatPerubahan as $log)
+                        <tr>
+                            <td class="border px-4 py-2">{{ ucwords(str_replace('_', ' ', $log['field'])) }}</td>
+                            <td class="border px-4 py-2">{{ $log['lama'] }}</td>
+                            <td class="border px-4 py-2">{{ $log['baru'] }}</td>
+                            <td class="border px-4 py-2">{{ $log['user'] }}</td>
+                            <td class="border px-4 py-2">{{ $log['waktu'] }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5" class="text-center py-3">Belum ada riwayat perubahan.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+
+
+        </div>
+        
+
     
     </div>
 </x-app-layout>

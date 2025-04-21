@@ -124,7 +124,7 @@
         
             {{-- tabel Barang --}}
             @if ($dataPagination->isEmpty())
-                <p class="text-gray-600 mt-56 text-center">--Tidak Ada Data Komputer Yang Tersedia--</p>
+                <p class="text-gray-200 mt-28 mb-10 text-center">--Tidak Ada Data Komputer Yang Tersedia--</p>
             @endif
 
             <table class="border border-gray-950 w-full ">

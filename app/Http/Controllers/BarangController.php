@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Barang;
 use App\Models\Komputer;
+use App\Models\BarangHistory;
 
 class BarangController extends Controller
 {
@@ -48,23 +49,80 @@ class BarangController extends Controller
 
     public function updateBarang($id)
     {
-        $dataBarang = Barang::find($id);
+        $dataBarang = Barang::findOrFail($id);
         $Barang = Barang::all();
-        return view ('updateBarang', compact('dataBarang','Barang'));
+
+        $semuaHistori = BarangHistory::where('barang_id', $id)
+            ->with('user')
+            ->orderBy('created_at')
+            ->get();
+
+        $riwayatPerubahan = [];
+
+        foreach ($semuaHistori as $i => $history) {
+            if ($i === 0) continue;
+
+            $prev = $semuaHistori[$i - 1];
+            $curr = $history;
+
+            $fields = ['kode_brg', 'nama_brg', 'jns_brg'];
+
+            foreach ($fields as $field) {
+                $old = $prev->$field;
+                $new = $curr->$field;
+
+                if ($old != $new) {
+                    $riwayatPerubahan[] = [
+                        'field' => $field,
+                        'lama' => $old,
+                        'baru' => $new,
+                        'waktu' => $curr->created_at->format('d M Y H:i'),
+                        'user' => $curr->user->name ?? 'Unknown',
+                    ];
+                }
+            }
+        }
+
+        return view('updateBarang', compact('dataBarang', 'Barang', 'riwayatPerubahan'));
     }
 
 
-    public function editBarang(Request $request, $id){
+
+    public function editBarang(Request $request, $id)
+    {
         $validatedData = $request->validate([
-        'kode_brg'  => 'required|string|max:255',
-        'nama_brg'  => 'required|string|max:255',
-        'jns_brg'   => 'required|string|max:255',
+            'kode_brg'  => 'required|string|max:255',
+            'nama_brg'  => 'required|string|max:255',
+            'jns_brg'   => 'required|string|max:255',
         ]);
 
         $barang = Barang::findOrFail($id);
 
+        $fieldsToCheck = ['kode_brg', 'nama_brg', 'jns_brg'];
+
+        $hasChanges = false;
+
+        foreach ($fieldsToCheck as $field) {
+            if ($barang->$field !== $validatedData[$field]) {
+                $hasChanges = true;
+                break;
+            }
+        }
+
+        // Update barang
         $barang->update($validatedData);
 
-        return redirect()->route('updateBarang', ['id' => $id])->with('success', 'Data Barang Berhasil Di UPDATE.');
-    }
+        // Simpan snapshot ke history jika ada perubahan
+        if ($hasChanges) {
+            BarangHistory::create(array_merge(
+                ['barang_id' => $barang->id],
+                $validatedData,
+                ['user_id' => auth()->id(), 'created_at' => now()]
+            ));
+        }
+
+        return redirect()->route('updateBarang', ['id' => $id])
+            ->with('success', 'Data Barang Berhasil Di UPDATE.');
+        }
+
 }

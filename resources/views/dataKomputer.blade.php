@@ -20,10 +20,10 @@
 
 
         @if ($dataKomputerPagination->isEmpty())
-            <p class="text-gray-600 mt-56 text-center">--Tidak Ada Data Komputer Yang Tersedia--</p>
+            <p class="text-gray-200 mt-28 mb-10 text-center">--Tidak Ada Data Komputer Yang Tersedia--</p>
         @endif
 
-        <table class=" border border-gray-300 w-full">
+        <table class="border border-gray-300 w-full">
             <thead class="border-orange-400 ">
                 <th class="border border-orange-400 lg:text-sm xs:text-xs">No</th> 
                 <th class="border border-orange-400 lg:text-sm xs:text-xs">Nama Komputer</th>
