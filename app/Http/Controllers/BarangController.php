@@ -109,6 +109,21 @@ class BarangController extends Controller
             }
         }
 
+
+          // Simpan snapshot awal jika belum ada histori sama sekali
+        $historiExist = BarangHistory::where('barang_id', $barang->id)->exists();
+
+        if (!$historiExist) {
+            BarangHistory::create([
+                'barang_id' => $barang->id,
+                'kode_brg'  => $barang->kode_brg,
+                'nama_brg'  => $barang->nama_brg,
+                'jns_brg'   => $barang->jns_brg,
+                'user_id'   => auth()->id(),
+                'created_at' => now()
+            ]);
+        }
+
         // Update barang
         $barang->update($validatedData);
 

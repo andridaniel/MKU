@@ -66,6 +66,7 @@
                             @method('get')
                             <button type="submit"
                                 class="w-full bg-orange-500 p-3 rounded-lg text-white font-semibold transition duration-300 ease-in-out hover:bg-red-700 shadow-md">
+                                <i class="fa-regular fa-pen-to-square"></i>
                                 Edit Data
                             </button>
                         </form>
@@ -76,6 +77,7 @@
                             @method('DELETE')
                             <button type="submit" id="deleteButton"
                                 class="w-full bg-red-600 p-3 rounded-lg text-white font-semibold transition duration-300 ease-in-out hover:bg-red-700 shadow-md">
+                                <i class="fa-solid fa-trash-can"></i>
                                 Hapus Data
                             </button>
                         </form>

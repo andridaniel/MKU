@@ -114,7 +114,7 @@
                     <h3 class="lg:text-2xl md:text-xl xs:text-md xs:p-2 lg:p-0 text-start text-white font-semibold">Data Barang Komputer</h3>
                 </div>
         
-                <div class="mb-5 lg:me-2 flex justify-end lg:px-0 md:px-0 xs:px-2">
+                <div class="mb-5 lg:me-1 flex justify-end lg:px-0 md:px-0 xs:px-2">
                     <button onclick="toggleModal()"  class="bg-gray-600 rounded-md  hover:bg-gray-700 p-3 xs:px-2 xs:text-xs lg:text-sm sm:px-5  text-white shadow-xl" > 
                         <i class="fa-solid fa-folder-plus me-2"></i>
                         Tambah Data Barang</button>
@@ -144,13 +144,16 @@
                     <td class="border border-orange-400 lg:text-sm xs:text-xs text-white">{{$data->jns_brg}}</td>
                     <td class="border border-orange-400 lg:text-sm xs:text-xs text-white">
 
-                        <div class="flex justify-center xs:flex xs:flex-col lg:flex lg:flex-row">
+                        <div class="flex justify-center xs:flex xs:flex-row lg:flex lg:flex-row">
 
                             <div class="m-2 basis-1/2">
                                 <form action="{{ route('editBarang', $data->id) }}" method="post">
                                     @csrf
                                     @method('get')
-                                    <button class="bg-gray-500 hover:bg-gray-600  p-2 px-4 rounded-md w-full text-white">Edit</button>
+                                    <button class="bg-gray-500 hover:bg-gray-600  p-2 px-4 rounded-md w-full text-white flex justify-center">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                        <div class="xs:hidden lg:block px-2">Edit</div>
+                                    </button>
                                 </form>
                             
                             </div>
@@ -159,7 +162,11 @@
                                 <form action="{{ route('deleteBarang', $data->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button id="deleteButton" class="bg-orange-500 hover:bg-orange-600  p-2 rounded-md w-full text-white">Hapus</button>
+                                    <button id="deleteButton" class="bg-orange-500 hover:bg-orange-600  p-2 px-4 rounded-md w-full text-white flex justify-center">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                        <div class="xs:hidden lg:block px-2">Hapus</div>
+                                    </button>
+                                        
                                     <script>
                                         document.getElementById('deleteButton').addEventListener('click', function(event) {
                                             if (!confirm('Apakah Anda yakin ingin menghapus data ini?')) {

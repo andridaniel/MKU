@@ -31,7 +31,7 @@
                                 <input type="text" name="kode_brg" id="kode_brg"
                                     autocomplete="given-name"
                                     value="{{ $dataBarang->kode_brg }}"
-                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-600 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                    class="block w-full rounded-md bg-gray-700 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                             </div>
                         </div>
     
@@ -40,11 +40,11 @@
                         <div class="sm:col-span-3">
                             <label for="nama_brg" class="block text-sm/6 font-medium text-white">Nama
                                 Barang</label>
-                            <div class="mt-2">
+                            <div class="mt-2  rounded-md">
                                 <input type="text" name="nama_brg" id="nama_brg"
                                     autocomplete="given-name"
                                     value="{{ $dataBarang->nama_brg }}"
-                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-600 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                    class="block w-full rounded-md bg-gray-700 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                             </div>
                         </div>
     
@@ -54,7 +54,7 @@
                             <label for="jns_brg" class="block text-sm/6 font-medium text-white">Jenis Barang</label>
                             <div class="mt-2">
                                 <select name="jns_brg" id="jns_brg"
-                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-600 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                    class="block w-full rounded-md bg-gray-700  px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                     <option value="Monitor" {{ $dataBarang->jns_brg == 'Monitor' ? 'selected' : '' }}>Monitor</option>
                                     <option value="Keyboard" {{ $dataBarang->jns_brg == 'Keyboard' ? 'selected' : '' }}>Keyboard</option>
                                     <option value="Ram" {{ $dataBarang->jns_brg == 'Ram' ? 'selected' : '' }}>Ram</option>

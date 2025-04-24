@@ -234,7 +234,31 @@ class MasterController extends Controller
                 ];
             }
         }
+
+        // Simpan snapshot awal jika belum ada histori sama sekali
+        $historiExist = DataKomputerHistory::where('data_komputer_id', $komputer->id)->exists();
     
+        if (!$historiExist) {
+            DataKomputerHistory::create([
+                'data_komputer_id' => $komputer->id,
+                'nama_komputer'  => $komputer->nama_komputer,
+                'ip_address'     => $komputer->ip_address,
+                'sistem_operasi' => $komputer->sistem_operasi,
+                'ruangan'        => $komputer->ruangan,
+                'id_monitor'     => $komputer->id_monitor,
+                'id_keyboard'    => $komputer->id_keyboard,
+                'id_ram'         => $komputer->id_ram,
+                'id_prosesor'    => $komputer->id_prosesor,
+                'id_ssd_hdd'     => $komputer->id_ssd_hdd,
+                'id_motherboard' => $komputer->id_motherboard,
+                'id_lan_card'    => $komputer->id_lan_card,
+                'keterangan'     => $komputer->keterangan,
+                'images'         => $komputer->images,
+                'user_id'        => auth()->id(),
+                'created_at'     => now(),
+            ]);
+        }
+        
         // Update data ke database
         $komputer->update($validatedData);
     

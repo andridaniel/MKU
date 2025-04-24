@@ -272,11 +272,11 @@
 
 
         {{-- riwayat --}}
-        <div class="mx-5 text-white">
+        <div class="mx-5 text-white mt-16">
      
             @if(count($riwayatPerubahan) > 0)
                 <div class="mt-5 mb-5">
-                    <p class="text-orange-500 font-semibold italic "> -- Riwayat Perubahan Data -- </p>
+                    <p class="text-orange-500 font-semibold italic lg:text-start xs:text-center "> -- Riwayat Perubahan Data -- </p>
                 </div>
 
                 <table class="table-auto w-full border text-sm">
