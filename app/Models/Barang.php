@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 
 class Barang extends Model
 {
@@ -20,6 +21,18 @@ class Barang extends Model
     public function histories()
     {
         return $this->hasMany(BarangHistory::class);
+    }
+
+
+    protected static function booted()
+    {
+        static::creating(function ($barang) {
+            $barang->slug = Str::slug($barang->nama_brg . '-' . uniqid());
+        });
+
+        // static::updating(function ($barang) {
+        //     $barang->slug = Str::slug($barang->nama_brg . '-' . uniqid());
+        // });
     }
 
 }

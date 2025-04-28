@@ -47,16 +47,19 @@ class BarangController extends Controller
         return redirect()->route('createBarang')->with('success', 'Data Barang Berhasil Dihapus.');
     }
 
-    public function updateBarang($id)
+    public function updateBarang($hash)
     {
-        $dataBarang = Barang::findOrFail($id);
+        $slug = base64_decode($hash);
+        $dataBarang = Barang::where('slug', $slug)->firstOrFail();
+
         $Barang = Barang::all();
 
-        $semuaHistori = BarangHistory::where('barang_id', $id)
+        $semuaHistori = BarangHistory::where('barang_id', $dataBarang->id)
             ->with('user')
             ->orderBy('created_at')
             ->get();
 
+        
         $riwayatPerubahan = [];
 
         foreach ($semuaHistori as $i => $history) {
@@ -88,7 +91,7 @@ class BarangController extends Controller
 
 
 
-    public function editBarang(Request $request, $id)
+    public function editBarang(Request $request, $hash)
     {
         $validatedData = $request->validate([
             'kode_brg'  => 'required|string|max:255',
@@ -96,7 +99,9 @@ class BarangController extends Controller
             'jns_brg'   => 'required|string|max:255',
         ]);
 
-        $barang = Barang::findOrFail($id);
+        $slug = base64_decode($hash);
+        $barang = Barang::where('slug', $slug)->firstOrFail();
+
 
         $fieldsToCheck = ['kode_brg', 'nama_brg', 'jns_brg'];
 
@@ -135,9 +140,8 @@ class BarangController extends Controller
                 ['user_id' => auth()->id(), 'created_at' => now()]
             ));
         }
-
-        return redirect()->route('updateBarang', ['id' => $id])
+        return redirect()->route('updateBarang', ['hash' => $hash])
             ->with('success', 'Data Barang Berhasil Di UPDATE.');
-        }
-
+    }
+       
 }

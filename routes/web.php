@@ -21,17 +21,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/dataKomputer', [MasterController::class, 'showData'])->name('dataKomputer');
     Route::post('/storeData', [MasterController::class, 'storeData'])->name('storeData');
     Route::get('/createData', [MasterController::class, 'createData'])->name('createData');
-    Route::get('/detailKomputer/{id}', [MasterController::class, 'detailKomputer'])->name('detailKomputer');
-    Route::get('/updateData/{id}', [MasterController::class, 'updateData'])->name('updateData');
-    Route::put('/updateData/{id}', [MasterController::class, 'editData'])->name('editData');
-    Route::delete('deleteData/{id}', [MasterController::class, 'deleteData'])->name('deleteData');
+    Route::get('/detailKomputer/{hash}', [MasterController::class, 'detailKomputer'])->name('detailKomputer');
+    Route::get('/updateData/{hash}', [MasterController::class, 'updateData'])->name('updateData');
+    Route::put('/updateData/{hash}', [MasterController::class, 'editData'])->name('editData');
+    Route::delete('deleteData/{hash}', [MasterController::class, 'deleteData'])->name('deleteData');
 
     Route::get('/createBarang',[BarangController::class, 'showBarang'])->name('createBarang');
     Route::post('/storeBarang',[BarangController::class, 'storeBarang'])->name('storeBarang');
 
-    Route::delete('deleteBarang/{id}', [BarangController::class, 'deleteBarang'])->name('deleteBarang');
-    Route::get('/updateBarang/{id}', [BarangController::class, 'updateBarang'])->name('updateBarang');
-    Route::put('/updateBarang/{id}', [BarangController::class, 'editBarang'])->name('editBarang');
+    Route::delete('deleteBarang/{hash}', [BarangController::class, 'deleteBarang'])->name('deleteBarang');
+    Route::get('/updateBarang/{hash}', [BarangController::class, 'updateBarang'])->name('updateBarang');
+    Route::put('/updateBarang/{hash}', [BarangController::class, 'editBarang'])->name('editBarang');
 
 
 });

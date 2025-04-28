@@ -46,7 +46,8 @@
                         <td class="border border-orange-400">
     
                             <div class="bg-gray-500 hover:bg-orange-500 text-white rounded-md flex justify-center items-center my-2 py-2 mx-2 lg:flex lg:flex-row xs:flex xs:flex-col xs:text-xs lg:text-sm">
-                                <a href=" {{ route('detailKomputer', ['id' => $value->id]) }}"
+                                <a href="{{ route('detailKomputer', ['hash' => base64_encode($value->slug)]) }}"
+                                    
                                     class="xs:flex xs:flex-col md:flex md:flex-row lg:flex lg:flex-row">
                                     <div class="xs:hidden md:block lg:block">
                                         Lihat Detail

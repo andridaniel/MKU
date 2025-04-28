@@ -2,7 +2,8 @@
     <div class="content-center">
 
         <div class="rounded-md">
-            <form action="{{ route('editData', ['id' => $updateKomputer->id]) }}" enctype="multipart/form-data"
+            <form action="{{ route('editData', ['hash' => base64_encode ($updateKomputer->slug)]) }}" enctype="multipart/form-data"
+                
                 method="POST">
                 @csrf
                 @method('PUT')
@@ -10,7 +11,7 @@
                     <div class="border-b border-gray-900/10 pb-12 bg-gray-400 mx-5 rounded-md">
     
                         <div class="p-5 pt-12 flex justify-start">
-                            <a href="{{ route('detailKomputer', ['id' => $updateKomputer->id]) }}"
+                            <a href="{{ route('detailKomputer', ['hash' => base64_encode ($updateKomputer->slug)]) }}"
                                 class="bg-gray-600 rounded-md hover:bg-gray-700 p-2 px-6 text-white shadow-xl">
                                 <i class="fa-solid fa-backward pe-2"></i>
                                 Kembali</a>

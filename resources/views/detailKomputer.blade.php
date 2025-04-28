@@ -60,7 +60,7 @@
 
                     <div class="flex gap-4 mt-5 bg-slate-100 p-4 rounded-md shadow-md">
                         <!-- Tombol Update -->
-                        <form action="{{ route('updateData', ['id' => $detailKomputer->id]) }}" method="POST"
+                        <form action="{{ route('updateData', ['hash' => base64_encode($detailKomputer->slug)]) }}" method="POST"
                             class="w-1/2">
                             @csrf
                             @method('get')
@@ -72,7 +72,7 @@
                         </form>
 
                         <!-- Tombol Delete -->
-                        <form action="{{ route('deleteData', $detailKomputer->id) }}" method="POST" class="w-1/2">
+                        <form action="{{ route('updateData', ['hash' => base64_encode($detailKomputer->slug)]) }}" method="POST" class="w-1/2">
                             @csrf
                             @method('DELETE')
                             <button type="submit" id="deleteButton"

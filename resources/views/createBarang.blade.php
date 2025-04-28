@@ -147,7 +147,7 @@
                         <div class="flex justify-center xs:flex xs:flex-row lg:flex lg:flex-row">
 
                             <div class="m-2 basis-1/2">
-                                <form action="{{ route('editBarang', $data->id) }}" method="post">
+                                <form action="{{ route('editBarang', ['hash' => base64_encode($data->slug) ]) }}" method="post">
                                     @csrf
                                     @method('get')
                                     <button class="bg-gray-500 hover:bg-gray-600  p-2 px-4 rounded-md w-full text-white flex justify-center">

@@ -15,9 +15,9 @@
                     <h3 class="py-2 text-white xs:text-xs sm:text-sm lg:text-xl ">UPDATE DATA BARANG KOMPUTER</h3>
                 </div>
             </div>
-            <form action="{{ route('editBarang', ['id' => $dataBarang->id]) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('editBarang', ['hash' => base64_encode($dataBarang->slug) ]) }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('put')
+                @method('put') 
     
                 
                 <div class="space-y-12">
@@ -99,7 +99,7 @@
         </div>
 
         {{-- riwayat --}}
-        <div class="mx-5 text-white">
+        <div class="mx-2 text-white">
 
             <h2 class="text-lg font-semibold mt-6 mb-2">Riwayat Perubahan</h2>
             <table class="table-auto w-full border text-sm">

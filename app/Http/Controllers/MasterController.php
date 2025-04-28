@@ -15,9 +15,11 @@ class MasterController extends Controller
         return view('dataKomputer');
     }
 
-    public function detailKomputer($id)
+    public function detailKomputer($hash)
     {
-        $detailKomputer= Komputer::findOrFail($id);
+        $slug = base64_decode($hash);
+         
+        $detailKomputer = Komputer::where('slug', $slug)->firstOrFail();
         $monitor = Barang::find($detailKomputer->id_monitor);
         $keyboard = Barang::find($detailKomputer->id_keyboard);
         $ram = Barang::find($detailKomputer->id_ram);
@@ -106,9 +108,11 @@ class MasterController extends Controller
 
 // Mengupdate Data
 
-    public function updateData($id)
+    public function updateData($hash)
     {
-        $updateKomputer= Komputer::findOrFail($id);
+        $slug = base64_decode($hash);
+        $updateKomputer= Komputer::where('slug', $slug)->firstOrFail();
+
         $monitor = Barang::where('jns_brg', 'Monitor')->get();
         $keyboard = Barang::where('jns_brg', 'Keyboard')->get();
         $ram = Barang::where('jns_brg', 'Ram')->get();
@@ -130,7 +134,7 @@ class MasterController extends Controller
             'motherboard',
             'lan_card',
             'user'
-        ])->where('data_komputer_id', $id)
+        ])->where('data_komputer_id', $updateKomputer->id)
           ->orderBy('created_at')
           ->get();
         
@@ -185,7 +189,9 @@ class MasterController extends Controller
         return view('updateData', compact('updateKomputer', 'monitor', 'keyboard', 'ram', 'prosesor', 'ssd_hdd', 'motherboard', 'lan_card',   'riwayatPerubahan' ));   
     }
 
-    public function editData(Request $request, $id)
+
+
+    public function editData(Request $request, $hash)
     {
         // Validasi data
         $validatedData = $request->validate([
@@ -204,7 +210,8 @@ class MasterController extends Controller
             'images'         => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     
-        $komputer = Komputer::findOrFail($id);
+        $slug = base64_decode($hash);
+        $komputer = Komputer::where('slug', $slug)->firstOrFail();
     
         // Simpan gambar jika ada, jika tidak gunakan gambar lama
         if ($request->hasFile('images')) {
@@ -274,7 +281,7 @@ class MasterController extends Controller
             ));
         }
     
-        return redirect()->route('updateData', ['id' => $id])->with('success', 'Data komputer berhasil diupdate.');
+        return redirect()->route('updateData', ['hash' => base64_encode($slug)])->with('success', 'Data komputer berhasil diupdate.');
     }
     
 

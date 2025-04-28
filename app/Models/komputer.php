@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 
 class Komputer extends Model
 
@@ -74,6 +75,19 @@ class Komputer extends Model
     public function lan_Card()
     {
         return $this->belongsTo(Barang::class, 'id_lan_card');
+    }
+
+
+
+    protected static function booted()
+    {
+        static::creating(function ($data_komputer) {
+            $data_komputer->slug = Str::slug($data_komputer->nama_komputer . '-' . uniqid());
+        });
+
+        // static::updating(function ($data_komputer) {
+        //     $data_komputer->slug = Str::slug($data_komputer->nama_komputer . '-' . uniqid());
+        // });
     }
 
 
