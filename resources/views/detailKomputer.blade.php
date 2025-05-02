@@ -11,49 +11,40 @@
 
             
 
-            <div class="mb-2 mt-10 flex justify-start">
-                <h1 class="lg:text-3xl font-bold text-white  xs:text-xl"> Detail Komputer</h1>       
-            </div>
+           
 
-            <div class="grid grid-cols-2 xs:grid-cols-1 md:grid-cols-2 sm:grid-cols-1 bg-gray-300 rounded-md">
-                <div class="p-5 rounded-md">
-                    <img src="{{ url($detailKomputer->images) }}" width="500" class="rounded-md" alt="gambar komputer">
+            <div class="grid gap-2 grid-cols-2 xs:grid-cols-1 md:grid-cols-2 sm:grid-cols-1 bg-gray-300 rounded-md">
+
+                <div class="m-5 rounded-md bg-yellow-400 ">
+                    <img src="{{ url($detailKomputer->images) }}"  class="rounded-md bg-red-500 w-full h-full object-cover" alt="gambar komputer">
                 </div>
+
                 <div class="m-5">
                     <div class="mx-auto">
                         <div class=" bg-slate-100 rounded-md p-5">
-                            <label for="" class="font-bold ">Keterangan</label>
-                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $detailKomputer->keterangan }}</div>
+                            <div class="mb-2 w-full font-bold text-xs border-b-2"><span>{{ $detailKomputer->nama_komputer }}</span></div>
 
-                            <label for="" class="font-bold ">IP Komputer</label>
-                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $detailKomputer->ip_address }}</div>
+                            <div class="mb-2 w-full font-bold text-xs border-b-2"><span>{{ $detailKomputer->ip_address }}</span></div>
 
-                            <label for="" class="font-bold ">Sistem Operasi</label>
-                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $detailKomputer->sistem_operasi }}</div>
+                            <div class="mb-2 w-full font-bold text-xs border-b-2"><span>{{ $detailKomputer->sistem_operasi }} </span></div>
 
-                            <label for="" class="font-bold ">Ruangan Komputer</label>
-                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $detailKomputer->ruangan }}</div>
+                            <div class="mb-2 w-full font-bold text-xs border-b-2"> <span></span> {{ $detailKomputer->ruangan }}</div>
 
-                            <label for="" class="font-bold">Monitor Komputer</label>
-                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $monitor->nama_brg ?? 'Tidak tersedia' }}</div>
+                            <div class="mb-2 w-full font-bold text-xs border-b-2"><span>{{ $monitor->nama_brg ?? 'Tidak tersedia' }}</span></div>
 
-                            <label for="" class="font-bold">Keyboard Komputer</label>
-                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $keyboard->nama_brg ?? 'Tidak tersedia' }}</div>
+                            <div class="mb-2 w-full font-bold text-xs border-b-2"><span>{{ $keyboard->nama_brg ?? 'Tidak tersedia' }}</span></div>
 
-                            <label for="" class="font-bold">Ram Komputer</label>
-                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $ram->nama_brg ?? 'Tidak tersedia' }}</div>
+                            <div class="mb-2 w-full font-bold text-xs border-b-2">Ram <span>{{ $ram->nama_brg ?? 'Tidak tersedia' }}</span></div>
 
-                            <label for="" class="font-bold">Processor Komputer</label>
-                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $prosesor->nama_brg ?? 'Tidak tersedia' }}</div>
+                            <div class="mb-2 w-full font-bold text-xs border-b-2"> Processor <span> {{ $prosesor->nama_brg ?? 'Tidak tersedia' }}</span> </div>
 
-                            <label for="" class="font-bold">SSD/HDD Komputer</label>
-                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $ssd_hdd->nama_brg ?? 'Tidak tersedia' }}</div>
+                            <div class="mb-2 w-full font-bold text-xs border-b-2"> SSD/HDD  <span>{{ $ssd_hdd->nama_brg ?? 'Tidak tersedia' }}</span></div>
 
-                            <label for="" class="font-bold">Motherboard Komputer</label>
-                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $motherboard->nama_brg ?? 'Tidak tersedia' }}</div>
+                            <div class="mb-2 w-full font-bold text-xs border-b-2"> Motherboard  <span>{{ $motherboard->nama_brg ?? 'Tidak tersedia' }}</span></div>
 
-                            <label for="" class="font-bold">Lan Card Komputer</label>
-                            <div class="mb-2 border border-gray-900 p-2 rounded-md">{{ $lan_card->nama_brg ?? 'Tidak tersedia' }}</div>
+                            <div class="mb-2 w-full font-bold text-xs border-b-2"> Lan Card  <span>{{ $lan_card->nama_brg ?? 'Tidak tersedia' }}</span></div>
+
+                            <div class="mb-2 w-full font-bold text-xs border-b-2">  <span>{{ $detailKomputer->keterangan }}</span> </div>
 
                         </div>
                     </div>
@@ -61,18 +52,50 @@
                     <div class="flex gap-4 mt-5 bg-slate-100 p-4 rounded-md shadow-md">
                         <!-- Tombol Update -->
                         <form action="{{ route('updateData', ['hash' => base64_encode($detailKomputer->slug)]) }}" method="POST"
-                            class="w-1/2">
+                            class="m-2 basis-1/2">
                             @csrf
                             @method('get')
+                        
                             <button type="submit"
-                                class="w-full bg-orange-500 p-3 rounded-lg text-white font-semibold transition duration-300 ease-in-out hover:bg-red-700 shadow-md">
+                                class="w-full bg-orange-500 p-2 px-4 rounded-md text-white font-semibold transition duration-300 ease-in-out hover:bg-red-700 shadow-md">
                                 <i class="fa-regular fa-pen-to-square"></i>
                                 Edit Data
                             </button>
                         </form>
 
+
+                        <!-- Tombol Hapus (data-url langsung dari helper route) -->
+                        <div class="m-2 basis-1/2">
+                            <button onclick="deleteButton(true, this)"
+                                data-url="{{ route('deleteData', $detailKomputer->id) }}"
+                                class="w-full bg-red-600 p-2 px-4 rounded-md text-white font-semibold transition duration-300 ease-in-out hover:bg-orange-500 shadow-md">
+                                <i class="fa-solid fa-trash-can"></i>
+                            Hapus
+                            </button>
+                        </div>
+
+                        <!-- Modal Konfirmasi Hapus -->
+                        <div id="deleteModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+                            <div class="bg-white rounded-xl p-6 w-full max-w-md shadow-lg lg:mx-1 md:mx-3 xs:mx-5">
+                                <h2 class="text-xl font-semibold mb-4 text-gray-600">Hapus Barang</h2>
+                                <p class="mb-4 text-gray-700">Apakah Anda yakin ingin menghapus Data Komputer?</p>
+                                <div class="flex justify-end">
+                                    <button onclick="deleteButton(false)" type="button"
+                                        class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 mr-2">Tutup</button>
+
+                                    <!-- Form konfirmasi hapus -->
+                                    <form id="deleteForm" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">Hapus</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Tombol Delete -->
-                        <form action="{{ route('updateData', ['hash' => base64_encode($detailKomputer->slug)]) }}" method="POST" class="w-1/2">
+                        {{-- <form action="{{ route('updateData', ['hash' => base64_encode($detailKomputer->slug)]) }}" method="POST" class="w-1/2">
                             @csrf
                             @method('DELETE')
                             <button type="submit" id="deleteButton"
@@ -80,7 +103,7 @@
                                 <i class="fa-solid fa-trash-can"></i>
                                 Hapus Data
                             </button>
-                        </form>
+                        </form> --}}
                     </div>
 
                 </div>
@@ -88,11 +111,19 @@
         </div>
 
         <script>
-            // button delete
-            document.getElementById('deleteButton').addEventListener('click', function(event) {
-                if (!confirm('Apakah Anda yakin ingin menghapus data ini?')) {
-                    event.preventDefault();
+            
+
+
+
+             //button delete
+            function deleteButton(show, button = null) {
+                const modal = document.getElementById('deleteModal');
+                modal.classList.toggle('hidden', !show);
+
+                if (button && button.dataset.url) {
+                    const form = document.getElementById('deleteForm');
+                    form.action = button.dataset.url;
                 }
-            });
+            }
         </script>
 </x-app-layout>

@@ -15,27 +15,16 @@
     <div class="m-2 rounded-md mt-5">
 
         {{-- create barang --}}
-        <div id="modal" class=" bg-gray-700  rounded-md  hidden">
+        <div id="modal" class=" fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
 
-            <div class="flex justify-between bg-gray-700 rounded-t-md">
-                <div class="m-5 text-2xl ">
-                    <h3 class=" text-white xs:text-xs sm:text-sm lg:text-xl ">TAMBAH DATA BARANG KOMPUTER</h3>
-                </div>
-
-                <div class="m-5">
-                    <button onclick="closeModal()" class="bg-gray-600 rounded-md hover:bg-gray-400 p-2 px-6 text-orange-500 shadow-xl">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-        
-            </div>
-    
-            <div class="m-3">
+            <div class="m-3 bg-white rounded-md lg:w-7/12 md:w-8/12 xs:w-11/12 mx-2">
                 <form action="{{ route('storeBarang') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="space-y-12">
+                    <div class="space-y-12 mx-2">
                         <div class="border-b border-gray-900/10 pb-12 m-2">
-        
+                            <div class="">
+                                <h3 class="text-base font-semibold leading-7">Tambah Data Barang</h3>
+                            </div>
                             {{-- kode barang --}}
                             <div class="sm:col-span-3">
                                 <label for="kode_brg" class="block text-sm/6 font-medium text-white">Kode
@@ -83,12 +72,12 @@
                                     <div class="flex items-center justify-end">
     
                                         <div class="mt-6 flex items-center justify-end">
-                                            <button type="reset" class="bg-blue-500 hover:bg-blue-600 p-2 rounded-md px-5 mx-2 text-white"> Cancel</button>
+                                            <button onclick="toggleModal(false)" class=" bg-gray-500  hover:bg-gray-400 p-2 rounded-md px-5 text-white  mr-2">Tutup</button>
                                         </div>
     
                                         <div class="mt-6 flex items-center justify-end ">
                                             <button type="submit"
-                                                class="bg-gray-500 hover:bg-gray-600  p-2 rounded-md px-5 text-white">Simpan</button>
+                                                class="bg-orange-500 hover:bg-orange-300  p-2 rounded-md px-5 text-white">Simpan</button>
                                         </div>
                                         
                                     </div>
@@ -115,8 +104,8 @@
                 </div>
         
                 <div class="mb-5 lg:me-1 flex justify-end lg:px-0 md:px-0 xs:px-2">
-                    <button onclick="toggleModal()"  class="bg-gray-600 rounded-md  hover:bg-gray-700 p-3 xs:px-2 xs:text-xs lg:text-sm sm:px-5  text-white shadow-xl" > 
-                        <i class="fa-solid fa-folder-plus me-2"></i>
+                    <button onclick="toggleModal(true)"  class="bg-gray-600 rounded-md  hover:bg-gray-700 p-3 xs:px-2 xs:text-xs lg:text-sm sm:px-5  text-white shadow-xl" > 
+                        <i class="fa-solid fa-plus mx-2"></i>
                         Tambah Data Barang</button>
                 </div>
             </div>
@@ -158,25 +147,35 @@
                             
                             </div>
 
+                            <!-- Tombol Hapus (data-url langsung dari helper route) -->
                             <div class="m-2 basis-1/2">
-                                <form action="{{ route('deleteBarang', $data->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button id="deleteButton" class="bg-orange-500 hover:bg-orange-600  p-2 px-4 rounded-md w-full text-white flex justify-center">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                        <div class="xs:hidden lg:block px-2">Hapus</div>
-                                    </button>
-                                        
-                                    <script>
-                                        document.getElementById('deleteButton').addEventListener('click', function(event) {
-                                            if (!confirm('Apakah Anda yakin ingin menghapus data ini?')) {
-                                                event.preventDefault();
-                                            }
-                                        });
-                                    </script>
-                                </form>
+                                <button onclick="deleteButton(true, this)"
+                                    data-url="{{ route('deleteBarang', $data->id) }}"
+                                    class="bg-orange-500 hover:bg-orange-600 p-2 px-4 rounded-md w-full text-white flex justify-center">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    <div class="xs:hidden lg:block px-2">Hapus</div>
+                                </button>
                             </div>
 
+                            <!-- Modal Konfirmasi Hapus -->
+                            <div id="deleteModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+                                <div class="bg-white rounded-xl p-6 w-full max-w-md shadow-lg lg:mx-1 md:mx-3 xs:mx-5">
+                                    <h2 class="text-xl font-semibold mb-4 text-gray-600">Hapus Barang</h2>
+                                    <p class="mb-4 text-gray-700">Apakah Anda yakin ingin menghapus barang ini?</p>
+                                    <div class="flex justify-end">
+                                        <button onclick="deleteButton(false)" type="button"
+                                            class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 mr-2">Tutup</button>
+
+                                        <!-- Form konfirmasi hapus -->
+                                        <form id="deleteForm" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">Hapus</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     
@@ -194,6 +193,8 @@
 
 
         </div>
+
+
        
        
          {{-- pagination --}}
@@ -203,17 +204,32 @@
                 </div>
 
         </div>
+
     </div>
 
     <script>
-       function toggleModal() {
+       function toggleModal(show) {
             const modal = document.getElementById('modal');
-            modal.classList.toggle('hidden');
+            modal.classList.toggle('hidden', !show);
         }
 
-        function closeModal() {
-            const modal = document.getElementById('modal').classList.add('hidden');
+       
+
+
+        //button delete
+        function deleteButton(show, button = null) {
+            const modal = document.getElementById('deleteModal');
+            modal.classList.toggle('hidden', !show);
+
+            if (button && button.dataset.url) {
+                const form = document.getElementById('deleteForm');
+                form.action = button.dataset.url;
+            }
         }
+
+       
+
+
 
     </script>
 

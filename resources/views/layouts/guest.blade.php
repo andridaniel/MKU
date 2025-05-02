@@ -17,7 +17,7 @@
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center  sm:pt-0 bg-gray-700">
             <div class="w-full mt-28 text-center ">
-                <h1 class="text-4xl font-bold text-red-500 italic">MKU <span class="text-blue-500">MKS</span></h1>
+                <h1 class="text-4xl font-bold text-red-500">MKU <span class="text-blue-400">MKS</span></h1>
             </div>
 
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-gray-700  shadow-md overflow-hidden sm:rounded-lg">

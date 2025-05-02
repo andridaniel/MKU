@@ -13,7 +13,7 @@
             <div class="mx-2  xs:my-2 xs:w-[180px] md:w-[250px] lg:w-[200px] xs:py-1 lg:py-2 bg-blue-500 hover:bg-blue-400 shadow-lg rounded-md">
                 <a href="{{ route('createData') }}"
                 class="pe-5 p-3 text-white xs:text-xs md:text-sm lg:text-sm">
-                <i class="fa-solid fa-folder-plus"></i>
+                <i class="fa-solid fa-plus"></i>
                 Tambah Data Komputer</a>
             </div>
         </div>
