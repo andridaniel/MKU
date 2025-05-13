@@ -9,10 +9,6 @@
                     Kembali</a>
             </div>
 
-            
-
-           
-
             <div class="grid gap-2 grid-cols-2 xs:grid-cols-1 md:grid-cols-2 sm:grid-cols-1 bg-gray-300 rounded-md">
 
                 <div class="m-5 rounded-md bg-yellow-400 ">
