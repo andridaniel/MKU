@@ -2,6 +2,7 @@
     <div class="mx-5 rounded-md">
         <form action="{{ route('storeData') }}" method="post" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" value="-" name="status">
             <div class="space-y-12 ">
                 <div class="border-b border-gray-900/10 py-2">
 
@@ -97,6 +98,24 @@
                                     </div>
                                 </div>
 
+
+                                 {{-- Mouse Komputer --}}
+                                 <div class="sm:col-span-3">
+                                    <label for="id_motherboard" class="block text-sm/6 font-medium text-white mt-4">Mouse
+                                        Komputer</label>
+                                    <div class="mt-2">
+                                        <select name="id_mouse" id="id_mouse"
+                                            class="block w-full rounded-md px-3 py-1.5 text-base bg-gray-700 text-white outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                            <option disabled selected> --Pilih Jenis Mouse Komputer--</option>
+                                            @foreach ($mouse as $item => $value)
+                                                <option class="text-white" value="{{ $value->id }}">{{ $value->nama_brg }}</option>
+                                            @endforeach
+                                        </select>
+
+                                    </div>
+                                </div>
+
+
                                 {{-- RAM Komputer --}}
                                 <div class="sm:col-span-3">
                                     <label for="id_ram" class="block text-sm/6 font-medium text-white mt-4">Ram
@@ -113,6 +132,15 @@
                                     </div>
                                 </div>
 
+                                
+
+                                
+                            </div>
+
+
+                            <div class="">
+
+
                                 {{-- Prosesor Komputer --}}
                                 <div class="sm:col-span-3">
                                     <label for="id_prosesor" class="block text-sm/6 font-medium text-white mt-4">Prosessor
@@ -128,13 +156,6 @@
 
                                     </div>
                                 </div>
-
-                                
-                            </div>
-
-
-                            <div class="">
-
 
                                 {{-- SSD-HDD Komputer --}}
                                 <div class="sm:col-span-3">
@@ -202,24 +223,24 @@
                                         Komputer</label>
                                     <div
                                         class="mt-2 flex justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-700 p-6">
-                                        <div class="text-center mt-8">
-                                            <svg class="mx-auto size-16 text-gray-400" viewBox="0 0 24 24"
+                                        <div class="text-center mt-2">
+                                            <svg class="mx-auto size-7 text-gray-400" viewBox="0 0 24 24"
                                                 fill="currentColor" aria-hidden="true">
                                                 <path fill-rule="evenodd"
                                                     d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            <div class="mt-4 flex flex-col items-center text-sm text-gray-600">
+                                            <div class="mt-2 flex flex-col items-center text-sm text-gray-600">
                                                 <label for="images"
-                                                    class="cursor-pointer rounded-md bg-indigo-600 px-4 py-2  text-white font-semibold shadow-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2">
+                                                    class="cursor-pointer rounded-md bg-indigo-600 px-4 py-1  text-white font-semibold shadow-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2">
                                                     Upload a file
                                                     <input id="images" name="images" type="file" class="sr-only"
                                                         onchange="displayFileName()">
                                                 </label>
-                                                <p class="mt-2 text-gray-500">or drag and drop</p>
+                                                <p class="mt-1 text-gray-500">or drag and drop</p>
                                             </div>
-                                            <p id="file-name" class="mt-2 text-xs text-gray-500"></p>
-                                            <p class="mt-2 text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                                            <p id="file-name" class="mt-1 text-xs text-gray-500"></p>
+                                            <p class="mt-1 text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                                         </div>
                                     </div>
                                 </div>

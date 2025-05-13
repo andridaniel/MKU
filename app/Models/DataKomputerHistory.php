@@ -15,12 +15,14 @@ class DataKomputerHistory extends Model
         'ruangan',
         'id_monitor',
         'id_keyboard',
+        'id_mouse',
         'id_ram',
         'id_prosesor',
         'id_ssd_hdd',
         'id_motherboard',
         'id_lan_card',
         'keterangan',
+        'status',
         'images',
     ];
 
@@ -43,6 +45,11 @@ class DataKomputerHistory extends Model
     public function keyboard()
     {
         return $this->belongsTo(Barang::class, 'id_keyboard');
+    }
+
+    public function mouse()
+    {
+        return $this->belongsTo(Barang::class, 'id_mouse');
     }
 
     public function ram()

@@ -20,12 +20,14 @@ return new class extends Migration
             $table->string('ruangan');
             $table->foreignId('id_monitor');
             $table->foreignId('id_keyboard');
+            $table->foreignId('id_mouse');
             $table->foreignId('id_ram');
             $table->foreignId('id_prosesor');
             $table->foreignId('id_ssd_hdd');
             $table->foreignId('id_motherboard');
             $table->foreignId('id_lan_card');
             $table->string('keterangan');
+            $table->string('status');
             $table->string('images');
             $table->timestamps();
         });

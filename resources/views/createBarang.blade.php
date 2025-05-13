@@ -56,6 +56,7 @@
                                         <option disabled selected> --Pilih Jenis Barang--</option>
                                         <option value="Monitor">Monitor</option>
                                         <option value="Keyboard ">Keyboard </option>
+                                        <option value="Mouse ">Mouse </option>
                                         <option value="Ram">Ram</option>
                                         <option value="Prosesor ">Prosesor </option>
                                         <option value="SSD/HDD ">SSD/HDD </option>

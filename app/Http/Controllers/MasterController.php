@@ -22,13 +22,14 @@ class MasterController extends Controller
         $detailKomputer = Komputer::where('slug', $slug)->firstOrFail();
         $monitor = Barang::find($detailKomputer->id_monitor);
         $keyboard = Barang::find($detailKomputer->id_keyboard);
+        $mouse = Barang::find($detailKomputer->id_mouse);
         $ram = Barang::find($detailKomputer->id_ram);
         $prosesor = Barang::find($detailKomputer->id_prosesor);
         $ssd_hdd = Barang::find($detailKomputer->id_ssd_hdd);
         $motherboard = Barang::find($detailKomputer->id_motherboard);
         $lan_card = Barang::find($detailKomputer->id_lan_card);
 
-        return view('detailKomputer', compact('detailKomputer', 'monitor', 'keyboard', 'ram', 'prosesor', 'ssd_hdd', 'motherboard', 'lan_card'));
+        return view('detailKomputer', compact('detailKomputer', 'monitor', 'keyboard', 'mouse', 'ram', 'prosesor', 'ssd_hdd', 'motherboard', 'lan_card'));
     }
 
 
@@ -36,13 +37,15 @@ class MasterController extends Controller
     {
         $monitor = Barang::where('jns_brg', 'Monitor')->get();
         $keyboard = Barang::where('jns_brg', 'Keyboard')->get();
+        $mouse = Barang::where('jns_brg', 'Mouse')->get();
         $ram = Barang::where('jns_brg', 'Ram')->get();
         $prosesor = Barang::where('jns_brg', 'Prosesor')->get();
         $ssd_hdd = Barang::where('jns_brg', 'SSD/HDD')->get();
         $motherboard = Barang::where('jns_brg', 'Motherboard')->get();
         $lan_card = Barang::where('jns_brg', 'Lan Card')->get();
 
-        return view('createData', compact('monitor', 'keyboard', 'ram', 'prosesor', 'ssd_hdd', 'motherboard', 'lan_card'));
+
+        return view('createData', compact('monitor', 'keyboard', 'mouse', 'ram', 'prosesor', 'ssd_hdd', 'motherboard', 'lan_card'));
     }
 
 // Menabahkan Data
@@ -56,14 +59,18 @@ class MasterController extends Controller
         'ruangan'        => 'required|string|max:255',
         'id_monitor'        => 'required|string|max:255',
         'id_keyboard'       => 'required|string|max:255',
+        'id_mouse'          => 'required|string|max:255',
         'id_ram'            => 'required|string|max:255',
         'id_prosesor'       => 'required|string|max:255',
         'id_ssd_hdd'        => 'required|string|max:255',
         'id_motherboard'    => 'required|string|max:255',
         'id_lan_card'       => 'required|string|max:255',
         'keterangan'     => 'nullable|string',
+        'status'         => 'nullable|string',
         'images'         => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
+
+ 
 
 
     // Simpan gambar jika ada
@@ -115,6 +122,7 @@ class MasterController extends Controller
 
         $monitor = Barang::where('jns_brg', 'Monitor')->get();
         $keyboard = Barang::where('jns_brg', 'Keyboard')->get();
+        $mouse = Barang::where('jns_brg', 'Mouse')->get();
         $ram = Barang::where('jns_brg', 'Ram')->get();
         $prosesor = Barang::where('jns_brg', 'Prosesor')->get();
         $ssd_hdd = Barang::where('jns_brg', 'SSD/HDD')->get();
@@ -128,6 +136,7 @@ class MasterController extends Controller
         $semuaHistori = DataKomputerHistory::with([
             'monitor',
             'keyboard',
+            'mouse',
             'ram',
             'prosesor',
             'ssd_hdd',
@@ -148,14 +157,15 @@ class MasterController extends Controller
         
             $fields = [
                 'nama_komputer', 'ip_address', 'sistem_operasi', 'ruangan',
-                'id_monitor', 'id_keyboard', 'id_ram', 'id_prosesor',
+                'id_monitor', 'id_keyboard', 'id_mouse', 'id_ram', 'id_prosesor',
                 'id_ssd_hdd', 'id_motherboard', 'id_lan_card',
-                'keterangan', 'images'
+                'keterangan', 'status', 'images'
             ];
         
             $relasiBarang = [
                 'id_monitor'     => 'monitor',
                 'id_keyboard'    => 'keyboard',
+                'id_mouse'       => 'mouse',
                 'id_ram'         => 'ram',
                 'id_prosesor'    => 'prosesor',
                 'id_ssd_hdd'     => 'ssd_hdd',
@@ -180,13 +190,15 @@ class MasterController extends Controller
                         'baru' => $currValue,
                         'waktu' => $curr->created_at->format('d M Y H:i'),
                         'user' => $curr->user,
+                        'status' => $curr->status,
                     ];
                 }
             }
         }
+       
         
 
-        return view('updateData', compact('updateKomputer', 'monitor', 'keyboard', 'ram', 'prosesor', 'ssd_hdd', 'motherboard', 'lan_card',   'riwayatPerubahan' ));   
+        return view('updateData', compact('updateKomputer', 'monitor', 'keyboard', 'mouse', 'ram', 'prosesor', 'ssd_hdd', 'motherboard', 'lan_card',   'riwayatPerubahan' ));   
     }
 
 
@@ -201,18 +213,28 @@ class MasterController extends Controller
             'ruangan'        => 'required|string|max:255',
             'id_monitor'     => 'required|string|max:255',
             'id_keyboard'    => 'required|string|max:255',
+            'id_mouse'       => 'required|string|max:255',
             'id_ram'         => 'required|string|max:255',
             'id_prosesor'    => 'required|string|max:255',
             'id_ssd_hdd'     => 'required|string|max:255',
             'id_motherboard' => 'required|string|max:255',
             'id_lan_card'    => 'required|string|max:255',
             'keterangan'     => 'nullable|string',
+            'status'         => 'nullable|string',
             'images'         => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-    
+
+
+       
+
+
         $slug = base64_decode($hash);
         $komputer = Komputer::where('slug', $slug)->firstOrFail();
-    
+
+        // Ambil nilai status, default ke 'Lama'
+        $statusInput = $request->input('status', '-');
+        $validatedData['status'] = $statusInput;
+
         // Simpan gambar jika ada, jika tidak gunakan gambar lama
         if ($request->hasFile('images')) {
             $image = $request->file('images');
@@ -222,19 +244,18 @@ class MasterController extends Controller
         } else {
             $validatedData['images'] = $komputer->images;
         }
-    
-        // Cek perbedaan data untuk log perubahan
+
+        // Cek perubahan
         $fieldsToCheck = [
             'nama_komputer', 'ip_address', 'sistem_operasi', 'ruangan',
-            'id_monitor', 'id_keyboard', 'id_ram', 'id_prosesor',
+            'id_monitor', 'id_keyboard', 'id_mouse', 'id_ram', 'id_prosesor',
             'id_ssd_hdd', 'id_motherboard', 'id_lan_card',
-            'keterangan', 'images'
+            'keterangan', 'status', 'images'
         ];
-    
+
         $changes = [];
-    
         foreach ($fieldsToCheck as $field) {
-            if ($komputer->$field != $validatedData[$field]) {
+            if (array_key_exists($field, $validatedData) && $komputer->$field != $validatedData[$field]) {
                 $changes[$field] = [
                     'lama' => $komputer->$field,
                     'baru' => $validatedData[$field],
@@ -242,47 +263,62 @@ class MasterController extends Controller
             }
         }
 
-        // Simpan snapshot awal jika belum ada histori sama sekali
+        // Cek histori awal
         $historiExist = DataKomputerHistory::where('data_komputer_id', $komputer->id)->exists();
-    
+
         if (!$historiExist) {
             DataKomputerHistory::create([
                 'data_komputer_id' => $komputer->id,
-                'nama_komputer'  => $komputer->nama_komputer,
-                'ip_address'     => $komputer->ip_address,
-                'sistem_operasi' => $komputer->sistem_operasi,
-                'ruangan'        => $komputer->ruangan,
-                'id_monitor'     => $komputer->id_monitor,
-                'id_keyboard'    => $komputer->id_keyboard,
-                'id_ram'         => $komputer->id_ram,
-                'id_prosesor'    => $komputer->id_prosesor,
-                'id_ssd_hdd'     => $komputer->id_ssd_hdd,
-                'id_motherboard' => $komputer->id_motherboard,
-                'id_lan_card'    => $komputer->id_lan_card,
-                'keterangan'     => $komputer->keterangan,
-                'images'         => $komputer->images,
-                'user_id'        => auth()->id(),
-                'created_at'     => now(),
+                'nama_komputer'    => $komputer->nama_komputer,
+                'ip_address'       => $komputer->ip_address,
+                'sistem_operasi'   => $komputer->sistem_operasi,
+                'ruangan'          => $komputer->ruangan,
+                'id_monitor'       => $komputer->id_monitor,
+                'id_keyboard'      => $komputer->id_keyboard,
+                'id_mouse'         => $komputer->id_mouse,
+                'id_ram'           => $komputer->id_ram,
+                'id_prosesor'      => $komputer->id_prosesor,
+                'id_ssd_hdd'       => $komputer->id_ssd_hdd,
+                'id_motherboard'   => $komputer->id_motherboard,
+                'id_lan_card'      => $komputer->id_lan_card,
+                'keterangan'       => $komputer->keterangan,
+                'status'           => $komputer->status ?? '-',
+                'images'           => $komputer->images,
+                'user_id'          => auth()->id(),
+                'created_at'       => now(),
             ]);
         }
+
+
+         // Ambil status hanya jika dikirim
+         if ($request->has('status')) {
+            $validatedData['status'] = $request->input('status');
+        } else {
+            // Pakai nilai lama dari DB kalau tidak dikirim
+            $validatedData['status'] = $komputer->status;
+        }
         
-        // Update data ke database
+
+        // Update data utama
         $komputer->update($validatedData);
-    
-        // Simpan satu snapshot baru ke histori kalau ada perubahan
+
+        // Simpan ke histori jika ada perubahan
         if (!empty($changes)) {
             DataKomputerHistory::create(array_merge(
                 ['data_komputer_id' => $komputer->id],
                 $validatedData,
                 [
-                    'user_id' => auth()->id(),
+                    'user_id'    => auth()->id(),
                     'created_at' => now()
                 ]
             ));
         }
-    
-        return redirect()->route('updateData', ['hash' => base64_encode($slug)])->with('success', 'Data komputer berhasil diupdate.');
+
+        return redirect()->route('updateData', ['hash' => base64_encode($slug)])
+                        ->with('success', 'Data komputer berhasil diupdate.');
     }
+
+
     
 
 

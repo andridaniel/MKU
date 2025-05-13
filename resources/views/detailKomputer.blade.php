@@ -32,7 +32,9 @@
 
                             <div class="mb-2 w-full font-bold text-xs border-b-2"><span>{{ $monitor->nama_brg ?? 'Tidak tersedia' }}</span></div>
 
-                            <div class="mb-2 w-full font-bold text-xs border-b-2"><span>{{ $keyboard->nama_brg ?? 'Tidak tersedia' }}</span></div>
+                            <div class="mb-2 w-full font-bold text-xs border-b-2">KeyBoard <span>{{ $keyboard->nama_brg ?? 'Tidak tersedia' }}</span></div>
+
+                            <div class="mb-2 w-full font-bold text-xs border-b-2">Mouse <span>{{ $mouse->nama_brg ?? 'Tidak tersedia' }}</span></div>
 
                             <div class="mb-2 w-full font-bold text-xs border-b-2">Ram <span>{{ $ram->nama_brg ?? 'Tidak tersedia' }}</span></div>
 
@@ -49,7 +51,7 @@
                         </div>
                     </div>
 
-                    <div class="flex gap-4 mt-5 bg-slate-100 p-4 rounded-md shadow-md">
+                    <div class="flex gap-4 mt-5 bg-slate-100 p-4 rounded-md shadow-md text-xs">
                         <!-- Tombol Update -->
                         <form action="{{ route('updateData', ['hash' => base64_encode($detailKomputer->slug)]) }}" method="POST"
                             class="m-2 basis-1/2">
@@ -124,6 +126,6 @@
                     const form = document.getElementById('deleteForm');
                     form.action = button.dataset.url;
                 }
-            }
+            } 
         </script>
 </x-app-layout>

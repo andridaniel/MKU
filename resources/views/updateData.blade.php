@@ -88,7 +88,7 @@
                                         </div>
                                     </div>
     
-    
+                                
                                     {{-- keyboard --}}
                                     <div class="sm:col-span-3">
                                         <label for="id_keyboard" class="block text-sm/6 font-medium text-white mt-4">Keyboard
@@ -105,6 +105,26 @@
                                             </select>
                                         </div>
                                     </div>
+
+                                    {{-- Mouse komputer --}}
+                                    <div class="sm:col-span-3">
+                                        <label for="id_mouse" class="block text-sm/6 font-medium text-white mt-4">Mouse Komputer</label>
+                                        <div class="mt-2">
+                                            <select name="id_mouse" id="id_mouse"
+                                                class="block w-full rounded-md bg-gray-700 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                                @foreach ($mouse as $item)
+                                                    <option value="{{ $item->id }}"
+                                                        {{ $updateKomputer->id_mouse == $item->id ? 'selected' : '' }}>
+                                                        {{ $item->nama_brg }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    
+
     
                                     {{-- Ram Komputer --}}
                                     <div class="sm:col-span-3">
@@ -123,22 +143,7 @@
                                         </div>
                                     </div>
     
-                                    {{-- prosesor komputer --}}
-                                    <div class="sm:col-span-3">
-                                        <label for="id_prosesor" class="block text-sm/6 font-medium text-white mt-4">Prosesor
-                                            Komputer</label>
-                                        <div class="mt-2">
-                                            <select name="id_prosesor" id="id_prosesor"
-                                                class="block w-full rounded-md bg-gray-700 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                                                @foreach ($prosesor as $item)
-                                                    <option value="{{ $item->id }}"
-                                                        {{ $updateKomputer->id_prosesor == $item->id ? 'selected' : '' }}>
-                                                        {{ $item->nama_brg }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
+                                    
     
                                   
     
@@ -146,6 +151,23 @@
                             
     
                             <div class="">
+
+                                {{-- prosesor komputer --}}
+                                <div class="sm:col-span-3">
+                                    <label for="id_prosesor" class="block text-sm/6 font-medium text-white mt-4">Prosesor
+                                        Komputer</label>
+                                    <div class="mt-2">
+                                        <select name="id_prosesor" id="id_prosesor"
+                                            class="block w-full rounded-md bg-gray-700 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                            @foreach ($prosesor as $item)
+                                                <option value="{{ $item->id }}"
+                                                    {{ $updateKomputer->id_prosesor == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->nama_brg }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
 
                                   {{-- SSD-HDD Komputer --}}
                                   <div class="sm:col-span-3">
@@ -217,26 +239,26 @@
                                         class=" flex justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-700 p-6 mt-2">
                                         @if (!empty($updateKomputer->images))
                                             <img src="{{ asset($updateKomputer->images) }}" alt="Foto Komputer"
-                                                class="w-300 h-20 object-cover rounded-md mt-10 mb-3">
+                                                class="w-200 h-10 object-cover rounded-md mt-10 mb-3">
                                         @endif
-                                        <div class="text-center my-4">
-                                            <svg class="mx-auto size-16 text-gray-300" viewBox="0 0 24 24"
+                                        <div class="text-center my-1.5">
+                                            <svg class="mx-auto size-7 text-gray-300" viewBox="0 0 24 24"
                                                 fill="currentColor" aria-hidden="true">
                                                 <path fill-rule="evenodd"
                                                     d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            <div class="mt-4 flex flex-col items-center text-sm text-gray-600">
+                                            <div class="mt-1 flex flex-col items-center text-sm text-gray-600">
                                                 <label for="images"
-                                                    class="cursor-pointer rounded-md bg-indigo-600 px-4 py-2 text-white font-semibold shadow-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2">
+                                                    class="cursor-pointer rounded-md bg-indigo-600 px-4 py-1 text-white font-semibold shadow-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2">
                                                     Upload a file
                                                     <input id="images" name="images" type="file" class="sr-only"
                                                         onchange="displayFileName()">
                                                 </label>
-                                                <p class="mt-2 text-gray-500">or drag and drop</p>
+                                                <p class="mt-1 text-gray-500">or drag and drop</p>
                                             </div>
-                                            <p id="file-name" class="mt-2 text-xs text-gray-500"></p>
-                                            <p class="mt-2 text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                                            <p id="file-name" class="mt-1 text-xs text-gray-500"></p>
+                                            <p class="mt-1 text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                                         </div>
                                     </div>
                                 </div>
@@ -262,6 +284,28 @@
     
     
     
+                        </div>
+
+
+                        {{-- Status Barang --}}
+                        <div class="my-2 mx-5">
+                             <div class="sm:col-span-3">
+                                <label for="nama_komputer" class="block text-sm/6 font-medium text-white mt-4">Status Barang</label>
+                                <div class="mt-2" value="{{ $updateKomputer->status }}">
+                                    <select name="status" id="status"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                    <option disabled selected > --Pilih Barang Yang Baru dengan Type yang sama--</option>
+                                    <option value="Ganti Monitor Baru">Monitor Baru </option>
+                                    <option value="Ganti Keyboard Baru ">Keyboard Baru </option>
+                                    <option value="Ganti Mouse Baru ">Mouse Baru </option>
+                                    <option value="Ganti Ram Baru">Ram Baru</option>
+                                    <option value="Ganti Prosesor Baru ">Prosesor Baru </option>
+                                    <option value="Ganti SSD/HDD Baru ">SSD/HDD Baru </option>
+                                    <option value="Ganti Motherboard Baru ">Motherboard Baru </option>
+                                    <option value="Ganti Lan Card Baru ">Lan Card Baru </option>
+                                </select>
+                                </div>
+                            </div>
                         </div>
 
 
@@ -298,20 +342,22 @@
                             <th class="border px-2 py-2">Data Lama</th>
                             <th class="border px-2 py-2">Data Baru</th>
                             <th class="border px-2 py-2">Waktu</th>
+                            <th class="border px-2 py-2">Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                            @foreach($riwayatPerubahan as $log)
-                                <tr class="xs:flex-col ">
-                                    <td class="border px-2 py-2 xs:flex-col text-white">{{ ucwords(str_replace('_', ' ', $log['field'])) }}</td>
-                                    <td class="border px-2 py-2 xs:flex-col text-white">
-                                        {{ $log['user']->name ?? 'User tidak diketahui' }}
-                                    </td>                            
-                                    <td class="border px-2 py-2 xs:flex-col text-white">{{ $log['lama'] ?? '-' }}</td>
-                                    <td class="border px-2 py-2 xs:flex-col text-white">{{ $log['baru'] ?? '-' }}</td>
-                                    <td class="border px-2 py-2 xs:flex-col text-white">{{ $log['waktu'] ?? '-' }}</td>
-                                </tr>
-                            @endforeach
+                        @foreach ($riwayatPerubahan as $riwayat)
+                            <tr>
+                                <td class="border px-2 py-2 xs:flex-col text-white">{{ $riwayat['field'] }}</td>
+                                <td class="border px-2 py-2 xs:flex-col text-white">{{ $riwayat['user']->name ?? 'User tidak diketahui' }}</td>
+                                <td class="border px-2 py-2 xs:flex-col text-white">{{ $riwayat['lama'] }}</td>
+                                <td class="border px-2 py-2 xs:flex-col text-white">{{ $riwayat['baru'] }}</td>
+                                <td class="border px-2 py-2 xs:flex-col text-white">{{ $riwayat['waktu'] }}</td>
+                                <td class="border px-2 py-2 xs:flex-col text-white">{{ $riwayat['status'] }}</td>
+                            </tr>
+                        @endforeach
+
+                            
                     </tbody>
                 </table>
             @else
@@ -321,6 +367,7 @@
                 
             @endif
     
+            
             
         
         </div>

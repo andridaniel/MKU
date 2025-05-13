@@ -19,12 +19,14 @@ return new class extends Migration
             $table->string('ruangan');
             $table->foreignId('id_monitor')->constrained('barangs')->onDelete('cascade');
             $table->foreignId('id_keyboard')->constrained('barangs')->onDelete('cascade');
+            $table->foreignId('id_mouse')->constrained('barangs')->onDelete('cascade');
             $table->foreignId('id_ram')->constrained('barangs')->onDelete('cascade');
             $table->foreignId('id_prosesor')->constrained('barangs')->onDelete('cascade');
             $table->foreignId('id_ssd_hdd')->constrained('barangs')->onDelete('cascade');
             $table->foreignId('id_motherboard')->constrained('barangs')->onDelete('cascade');
             $table->foreignId('id_lan_card')->constrained('barangs')->onDelete('cascade');
             $table->string('keterangan');
+            $table->string('status');
             $table->string('images');
             $table->timestamps();
 
