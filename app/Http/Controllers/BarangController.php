@@ -34,7 +34,13 @@ class BarangController extends Controller
     {
         $dataBarang = Barang::all();
 
-        $dataPagination = Barang::paginate(5);
+        $search = request('search');
+        $dataPagination = Barang::where('kode_brg', 'like', '%' . $search . '%') 
+        ->orwhere('nama_brg', 'like', '%' . $search . '%')
+        ->orwhere('jns_brg', 'like', '%' . $search . '%')
+        -> paginate(15);
+        
+       
 
         return view ('createBarang', compact('dataBarang', 'dataPagination'));
     }

@@ -3,7 +3,7 @@
 
     <div class="m-3 mt-10  flex justify-start ">
         <a href="{{ route('dataKomputer') }}"
-            class="bg-gray-600 rounded-md hover:bg-gray-400 p-2 px-6 text-white shadow-xl"> 
+            class="bg-gray-600 rounded-md hover:bg-gray-400 p-2 px-6 text-white shadow-xl xs:hidden md:block lg:block"> 
             <i class="fa-solid fa-backward pe-2"></i>
             Kembali </a>
     </div>
@@ -98,18 +98,39 @@
 
         <div class="mx-2 bg-gray-700">
 
-            <div class="flex justify-between pt-5 ">
-
-                <div class="lg:ms-2">
+                <div class="lg:ms-1">
                     <h3 class="lg:text-2xl md:text-xl xs:text-md xs:p-2 lg:p-0 text-start text-white font-semibold">Data Barang Komputer</h3>
                 </div>
-        
-                <div class="mb-5 lg:me-1 flex justify-end lg:px-0 md:px-0 xs:px-2">
-                    <button onclick="toggleModal(true)"  class="bg-gray-600 rounded-md  hover:bg-gray-700 p-3 xs:px-2 xs:text-xs lg:text-sm sm:px-5  text-white shadow-xl" > 
-                        <i class="fa-solid fa-plus mx-2"></i>
+
+            <div class="flex justify-between pt-5">
+
+                 <div class=" text-gray-950 flex w-full">
+                    <form action="{{ route('createBarang') }}" method="GET">
+
+                        <div class="flex items-center border lg:flex border-orange-400 rounded-md bg-gray-700 focus-within:ring-2 focus-within:ring-orange-500 transition">
+                            <button type="submit" class="px-3 text-gray-300 hover:text-white transition">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                            <input
+                                type="text" 
+                                name="search" 
+                                placeholder="Search..." 
+                            class="w-full py-2 px-2 bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-0 text-sm rounded-md border-none"
+                            >
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="mb-5 lg:me-1 lg:flex w-[350px]  lg:px-0 md:px-0 xs:px-2 bg-gray-600  rounded-md  hover:bg-gray-400 p-2 ms-2 ">
+                    <button onclick="toggleModal(true)"  class=" xs:text-xs lg:text-sm sm:px-5   text-white " > 
+                        <i class="fa-solid fa-plus mx-2 "></i>
                         Tambah Data Barang</button>
                 </div>
             </div>
+
+             {{-- Search --}}
+           
 
         
             {{-- tabel Barang --}}

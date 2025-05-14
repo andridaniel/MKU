@@ -1,6 +1,9 @@
 <x-app-layout>
     <div class="rounded-md text-white ">
 
+
+       
+
         <div class="flex mb-5 justify-end xs:flex xs:flex-col lg:flex-row  ">
 
             <div class="mx-2 xs:my-2 xs:w-[180px] md:w-[250px] lg:w-[200px] xs:py-1 lg:py-2 bg-yellow-500 hover:bg-orange-500 shadow-lg rounded-md">
@@ -17,6 +20,27 @@
                 Tambah Data Komputer</a>
             </div>
         </div>
+
+
+        {{-- Search --}}
+        <div class="mx-2 my-5 text-gray-950 flex lg:justify-start xs:justify-end ">
+            <form action="{{ route('dataKomputer') }}" method="GET">
+
+                <div class="flex items-center border lg:flex border-orange-400 rounded-md lg:w-[300px]   bg-gray-700 focus-within:ring-2 focus-within:ring-orange-500 transition">
+                    <button type="submit" class="px-3 text-gray-300 hover:text-white transition">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <input
+                        type="text" 
+                        name="search" 
+                        placeholder="Search..." 
+                       class="w-full py-2 px-2 bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-0 text-sm rounded-md border-none"
+                    >
+                </div>
+
+            </form>
+        </div>
+
 
 
         @if ($dataKomputerPagination->isEmpty())

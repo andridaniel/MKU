@@ -98,7 +98,12 @@ class MasterController extends Controller
     {
         $data = Komputer::all();
 
-        $dataKomputerPagination = Komputer::paginate(8);
+        $search = request('search');
+        $dataKomputerPagination = Komputer::where('nama_komputer',  'like', '%' . $search . '%')
+        ->orwhere('ruangan', 'like', '%' . $search . '%')                        
+        ->paginate(8);
+
+        
         return view('dataKomputer', compact('data', 'dataKomputerPagination'));
 
 

@@ -57,6 +57,7 @@
                                     class="block w-full rounded-md bg-gray-700  px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                     <option value="Monitor" {{ $dataBarang->jns_brg == 'Monitor' ? 'selected' : '' }}>Monitor</option>
                                     <option value="Keyboard" {{ $dataBarang->jns_brg == 'Keyboard' ? 'selected' : '' }}>Keyboard</option>
+                                    <option value="Mouse" {{ $dataBarang->jns_brg == 'Mouse' ? 'selected' : '' }}>Mouse</option>
                                     <option value="Ram" {{ $dataBarang->jns_brg == 'Ram' ? 'selected' : '' }}>Ram</option>
                                     <option value="Prosesor" {{ $dataBarang->jns_brg == 'Prosesor' ? 'selected' : '' }}>Prosesor</option>
                                     <option value="SSD/HDD" {{ $dataBarang->jns_brg == 'SSD/HDD' ? 'selected' : '' }}>SSD/HDD</option>
@@ -79,7 +80,6 @@
                                         <button type="submit"
                                             class="bg-gray-500 hover:bg-gray-600  p-2 rounded-md w-full text-white px-5">Simpan</button>
                                     </div>
-
                                     
                                 </div>
     
