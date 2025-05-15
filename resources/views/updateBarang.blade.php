@@ -4,9 +4,9 @@
 
         <div class=" xs:mx-2 md:mx-10 lg:mx-5 mt-5 flex justify-start ">
             <a href="{{ route('createBarang') }}"
-                class="bg-gray-600 rounded-md hover:bg-gray-500 p-2 px-6 text-white shadow-xl">
-                <i class="fa-solid fa-backward pe-2"></i>
-                Kembali </a>
+                class="bg-orange-400 rounded-md hover:bg-gray-500 p-1 px-5 text-white shadow-xl">
+                <i class="fa-solid fa-arrow-left"></i>
+               </a>
         </div>
              
         <div class="m-5  rounded-md xs:mx-2 md:mx-10 lg:mx-5">
@@ -115,11 +115,11 @@
                 <tbody>
                     @forelse($riwayatPerubahan as $log)
                         <tr>
-                            <td class="border px-4 py-2">{{ ucwords(str_replace('_', ' ', $log['field'])) }}</td>
-                            <td class="border px-4 py-2">{{ $log['lama'] }}</td>
-                            <td class="border px-4 py-2">{{ $log['baru'] }}</td>
-                            <td class="border px-4 py-2">{{ $log['user'] }}</td>
-                            <td class="border px-4 py-2">{{ $log['waktu'] }}</td>
+                            <td class="border px-2 py-2">{{ ucwords(str_replace('_', ' ', $log['field'])) }}</td>
+                            <td class="border px-2 py-2">{{ $log['lama'] }}</td>
+                            <td class="border px-2 py-2">{{ $log['baru'] }}</td>
+                            <td class="border px-2 py-2">{{ $log['user'] }}</td>
+                            <td class="border px-2 py-2">{{ $log['waktu'] }}</td>
                         </tr>
                     @empty
                         <tr>

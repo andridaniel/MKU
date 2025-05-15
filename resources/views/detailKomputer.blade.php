@@ -3,10 +3,10 @@
         <div class="lg:mx-5 md:mx-2 xs:mx-1 p-5">
 
             <div class="flex mb-5">
-                <a href=" {{ route('dataKomputer') }} "
-                    class="bg-gray-600  p-2 rounded-md hover:bg-gray-700 text-white px-6"> 
-                    <i class="fa-solid fa-backward pe-2"></i> 
-                    Kembali</a>
+                <a href="{{ route('dataKomputer') }}"
+                    class="bg-orange-400 rounded-md hover:bg-gray-400 p-1 px-5 text-white shadow-xl "> 
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
             </div>
 
             <div class="grid gap-2 grid-cols-2 xs:grid-cols-1 md:grid-cols-2 sm:grid-cols-1 bg-gray-300 rounded-md">
