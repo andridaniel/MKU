@@ -100,7 +100,8 @@ class MasterController extends Controller
 
         $search = request('search');
         $dataKomputerPagination = Komputer::where('nama_komputer',  'like', '%' . $search . '%')
-        ->orwhere('ruangan', 'like', '%' . $search . '%')                        
+        ->orwhere('ruangan', 'like', '%' . $search . '%')
+        ->orwhere('ip_address', 'like', '%' . $search . '%')                        
         ->paginate(8);
 
         

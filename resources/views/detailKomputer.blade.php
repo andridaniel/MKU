@@ -12,7 +12,7 @@
             <div class="grid gap-2 grid-cols-2 xs:grid-cols-1 md:grid-cols-2 sm:grid-cols-1 bg-gray-300 rounded-md">
 
                 <div class="m-5 rounded-md bg-yellow-400 ">
-                    <img src="{{ url($detailKomputer->images) }}"  class="rounded-md bg-red-500 w-full h-full object-cover" alt="gambar komputer">
+                    <img src="{{ url($detailKomputer->images) }}"  class="rounded-md bg-gray-400 w-full h-full object-cover p-2" alt="gambar komputer">
                 </div>
 
                 <div class="m-5">

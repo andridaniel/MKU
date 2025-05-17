@@ -12,7 +12,7 @@
     
                         <div class="p-5 pt-12 flex justify-start">
                             <a href="{{ route('detailKomputer', ['hash' => base64_encode ($updateKomputer->slug)]) }}"
-                                class="bg-orange-400 rounded-md hover:bg-gray-700 p-1 px-5 text-white shadow-xl">
+                                class="bg-orange-400 rounded-md hover:bg-gray-400 p-1 px-5 text-white shadow-xl">
                                 <i class="fa-solid fa-arrow-left"></i>
                                 </a>
                         </div>
